@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Design System – Devolvi Meu Crachá Workshop</title>
+    <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
+    <!-- Same CSS assets as index.html -->
+    <link data-minify="1" href="assets/frontend_1ad6735e0777.css" id="hfe-widgets-style-css" media="all"
+        rel="stylesheet" />
+    <link data-minify="1" href="assets/header-footer-elementor_e2bcd39f3c00.css" id="hfe-style-css" media="all"
+        rel="stylesheet" />
+    <link href="assets/custom-frontend_3f8afc9343c2.css" id="elementor-frontend-css" media="all" rel="stylesheet" />
+    <link href="assets/post-5_77ac3fa7dcdc.css" id="elementor-post-5-css" media="all" rel="stylesheet" />
+    <link href="assets/custom-pro-frontend_c6fbbc0305e7.css" id="elementor-pro-css" media="all" rel="stylesheet" />
+    <link href="assets/widget-image_733f8ac039ee.css" id="widget-image-css" media="all" rel="stylesheet" />
+    <link href="assets/custom-widget-progress_a1132c40f841.css" id="widget-progress-css" media="all" rel="stylesheet" />
+    <link href="assets/custom-widget-icon-list_103d824a8f09.css" id="widget-icon-list-css" media="all"
+        rel="stylesheet" />
+    <link href="assets/widget-heading_630b8d5c10f8.css" id="widget-heading-css" media="all" rel="stylesheet" />
+    <link href="assets/fadeIn_475c6272e6fd.css" id="e-animation-fadeIn-css" media="all" rel="stylesheet" />
+    <link href="assets/fadeInRight_533bc07d56e5.css" id="e-animation-fadeInRight-css" media="all" rel="stylesheet" />
+    <link data-minify="1" href="assets/swiper_d3b03f9d90c3.css" id="swiper-css" media="all" rel="stylesheet" />
+    <link href="assets/e-swiper_5963aac6d2f6.css" id="e-swiper-css" media="all" rel="stylesheet" />
+    <link href="assets/widget-image-carousel_1385acc91d59.css" id="widget-image-carousel-css" media="all"
+        rel="stylesheet" />
+    <link href="assets/custom-widget-icon-box_7054a3c7ac8f.css" id="widget-icon-box-css" media="all" rel="stylesheet" />
+    <link href="assets/post-9664_be1d33bc1a3f.css" id="elementor-post-9664-css" media="all" rel="stylesheet" />
+    <link href="assets/widget-rating_44e433f1a3ac.css" id="widget-rating-css" media="all" rel="stylesheet" />
+    <link data-minify="1" href="assets/reset_ee1befd2c711.css" id="hello-elementor-css" media="all" rel="stylesheet" />
+    <link data-minify="1" href="assets/theme_e0d008fbfcbc.css" id="hello-elementor-theme-style-css" media="all"
+        rel="stylesheet" />
+    <link data-minify="1" href="assets/poppins_32ad1fd07af9.css" id="elementor-gf-local-poppins-css" media="all"
+        rel="stylesheet" />
+    <link data-minify="1" href="assets/montserrat_7052a8f1cae3.css" id="elementor-gf-local-montserrat-css" media="all"
+        rel="stylesheet" />
+    <link data-minify="1" href="assets/inter_8b6e16662bbc.css" id="elementor-gf-local-inter-css" media="all"
+        rel="stylesheet" />
+    <link data-minify="1" href="assets/merriweather_99d6b141a706.css" id="elementor-gf-local-merriweather-css"
+        media="all" rel="stylesheet" />
+    <link data-minify="1" href="assets/fontawesome_d31bc548eb76.css" id="hfe-social-share-icons-fontawesome-css"
+        media="all" rel="stylesheet" />
+    <link data-minify="1" href="assets/solid_eb01304c4061.css" id="hfe-nav-menu-icons-css" media="all"
+        rel="stylesheet" />
+    <link data-minify="1" href="assets/elementor-icons_9a918d0864bf.css" id="hfe-elementor-icons-css" media="all"
+        rel="stylesheet" />
+
+    <style>
+        /* ── DS Nav ── */
+        .ds-nav {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            background: #0a1a1c;
+            border-bottom: 1px solid #B3A27540;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .ds-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .ds-nav a {
+            font-family: "Montserrat", Sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #B3A275;
+            text-decoration: none;
+            padding: 14px 20px;
+            white-space: nowrap;
+            transition: color 0.3s, background 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .ds-nav a:hover {
+            color: #fff;
+            background: #ffffff08;
+            border-bottom-color: #00FF5F;
+        }
+
+        .ds-nav-brand {
+            font-family: "Montserrat", Sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            color: #F3F0E9;
+            padding: 14px 24px;
+            border-right: 1px solid #B3A27540;
+            white-space: nowrap;
+        }
+
+        /* ── DS Section Wrapper ── */
+        .ds-section {
+            padding: 80px 0 60px;
+            scroll-margin-top: 52px;
+        }
+
+        .ds-section-label {
+            font-family: "Montserrat", Sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #B3A27599;
+            margin-bottom: 8px;
+            padding: 0 5vw;
+        }
+
+        .ds-section-title {
+            font-family: "Montserrat", Sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #B3A275;
+            margin-bottom: 48px;
+            padding: 0 5vw;
+            border-bottom: 1px solid #B3A27520;
+            padding-bottom: 24px;
+        }
+
+        /* ── Typography spec table ── */
+        .ds-type-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .ds-type-row {
+            display: grid;
+            grid-template-columns: 160px 1fr 160px;
+            align-items: center;
+            border-bottom: 1px solid #ffffff10;
+            padding: 20px 5vw;
+            gap: 24px;
+        }
+
+        .ds-type-row:hover {
+            background: #ffffff04;
+        }
+
+        .ds-type-name {
+            font-family: "Inter", Sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #B3A27580;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .ds-type-spec {
+            font-family: "Inter", Sans-serif;
+            font-size: 12px;
+            color: #F3F0E960;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        /* ── Color Swatches ── */
+        .ds-colors-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            padding: 0 5vw;
+        }
+
+        .ds-swatch {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 140px;
+        }
+
+        .ds-swatch-preview {
+            height: 80px;
+            border-radius: 10px;
+            border: 1px solid #ffffff15;
+        }
+
+        .ds-swatch-label {
+            font-family: "Inter", Sans-serif;
+            font-size: 12px;
+            color: #F3F0E9;
+            font-weight: 600;
+        }
+
+        .ds-swatch-hex {
+            font-family: "Inter", Sans-serif;
+            font-size: 11px;
+            color: #B3A27580;
+        }
+
+        .ds-swatch-desc {
+            font-family: "Inter", Sans-serif;
+            font-size: 11px;
+            color: #B3A27560;
+        }
+
+        /* ── Component States Row ── */
+        .ds-states-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 24px 5vw;
+            border-bottom: 1px solid #ffffff08;
+        }
+
+        .ds-state-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ds-state-label {
+            font-family: "Inter", Sans-serif;
+            font-size: 11px;
+            color: #B3A27580;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ── Layout pattern box ── */
+        .ds-layout-pattern {
+            border: 1px solid #B3A27530;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 0 5vw 32px;
+        }
+
+        .ds-layout-label-bar {
+            background: #0a1a1c;
+            padding: 10px 20px;
+            font-family: "Inter", Sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: #B3A275;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #B3A27520;
+        }
+
+        /* ── Motion Gallery ── */
+        .ds-motion-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            padding: 0 5vw;
+        }
+
+        .ds-motion-card {
+            background: #0a1a1c;
+            border: 1px solid #B3A27530;
+            border-radius: 12px;
+            padding: 32px 24px;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .ds-motion-card-label {
+            font-family: "Inter", Sans-serif;
+            font-size: 11px;
+            color: #B3A27580;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ── Icons section ── */
+        .ds-icons-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            padding: 0 5vw;
+        }
+
+        .ds-icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            min-width: 100px;
+        }
+
+        .ds-icon-item svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .ds-icon-label {
+            font-family: "Inter", Sans-serif;
+            font-size: 11px;
+            color: #B3A27580;
+            text-align: center;
+        }
+
+        /* remove margin-block from elementor widget in ds context */
+        .ds-section .elementor-widget:not(:last-child) {
+            margin-block-end: 0;
+        }
+    </style>
+</head>
+
+<body class="elementor-kit-5 elementor-default elementor-template-canvas">
+
+    <!-- ╔══════════════════════════════════════════════════════════╗
+     ║  DS TOP NAV                                              ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+    <nav class="ds-nav">
+        <span class="ds-nav-brand">🎨 Design System</span>
+        <a href="#ds-hero">0. Hero</a>
+        <a href="#ds-typography">1. Typography</a>
+        <a href="#ds-colors">2. Colors</a>
+        <a href="#ds-components">3. Components</a>
+        <a href="#ds-layout">4. Layout</a>
+        <a href="#ds-motion">5. Motion</a>
+        <a href="#ds-icons">6. Icons</a>
+    </nav>
+
+    <!-- ╔══════════════════════════════════════════════════════════╗
+     ║  0 · HERO (EXACT CLONE – TEXT ADAPTED)                  ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+    <section id="ds-hero">
+        <div class="elementor elementor-9664">
+            <div class="elementor-element elementor-element-4e14571 elementor-hidden-mobile e-flex e-con-boxed e-con e-parent e-lazyloaded"
+                data-element_type="container" data-id="4e14571"
+                style="--wpr-bg-12113ab1-e27d-4e6e-af29-23c6cbd24c90: url('assets/3_11zon_bdace91a1f0c.webp');">
+                <div class="e-con-inner">
+                    <div class="elementor-element elementor-element-39a0adf e-con-full e-flex e-con e-child"
+                        data-element_type="container" data-id="39a0adf">
+                        <div class="elementor-element elementor-element-292d021 elementor-widget elementor-widget-image"
+                            data-element_type="widget" data-id="292d021" data-widget_type="image.default">
+                            <div class="elementor-widget-container">
+                                <img alt="" class="attachment-large size-large wp-image-7243" decoding="async"
+                                    height="115" src="assets/Criando-1-1_7fce7b6c3d8f.png" width="210" />
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-b7e82ad elementor-widget elementor-widget-text-editor"
+                            data-element_type="widget" data-id="b7e82ad" data-widget_type="text-editor.default">
+                            <div class="elementor-widget-container">
+                                <p>Sistema de design <strong><span style="color: #16e463;">documentado</span>
+                                    </strong>e<strong><span style="color: #16e463;"> validado</span></strong>, para
+                                    comunicar identidade visual com clareza</p>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-c1b574e elementor-widget elementor-widget-text-editor"
+                            data-element_type="widget" data-id="c1b574e" data-widget_type="text-editor.default">
+                            <div class="elementor-widget-container">
+                                <p>sem perder nenhum padrão do design original</p>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-7bd8c60 elementor-align-justify pulse elementor-widget-mobile__width-initial elementor-widget elementor-widget-button"
+                            data-element_type="widget" data-id="7bd8c60" data-widget_type="button.default">
+                            <div class="elementor-widget-container">
+                                <div class="elementor-button-wrapper">
+                                    <a class="elementor-button elementor-button-link elementor-size-xs"
+                                        href="#ds-typography">
+                                        <span class="elementor-button-content-wrapper">
+                                            <span class="elementor-button-text">Explorar o Design System</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-84fe320 elementor-widget elementor-widget-text-editor"
+                            data-element_type="widget" data-id="84fe320" data-widget_type="text-editor.default">
+                            <div class="elementor-widget-container">
+                                <p>Seções: <del>7 componentes</del> por apenas 1 arquivo</p>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-59bb8ad elementor-widget elementor-widget-progress"
+                            data-element_type="widget" data-id="59bb8ad" data-widget_type="progress.default">
+                            <div class="elementor-widget-container">
+                                <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="100"
+                                    aria-valuetext="100% (Documentado)" class="elementor-progress-wrapper"
+                                    role="progressbar">
+                                    <div class="elementor-progress-bar" data-max="100" style="width: 100%;">
+                                        <span class="elementor-progress-text">Documentado</span>
+                                        <span class="elementor-progress-percentage">100%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="elementor-element elementor-element-cbbbab7 e-con-full e-flex e-con e-child"
+                        data-element_type="container" data-id="cbbbab7">
+                        <div class="elementor-element elementor-element-e38c7c7 elementor-widget elementor-widget-image"
+                            data-element_type="widget" data-id="e38c7c7" data-widget_type="image.default">
+                            <div class="elementor-widget-container">
+                                <img alt="" class="attachment-large size-large wp-image-7911" decoding="async"
+                                    fetchpriority="high" height="725" src="assets/wepg1_157dfec2928e.webp"
+                                    width="800" />
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-c0aebd0 elementor-icon-list--layout-inline elementor-align-center elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
+                            data-element_type="widget" data-id="c0aebd0" data-widget_type="icon-list.default">
+                            <div class="elementor-widget-container">
+                                <ul class="elementor-icon-list-items elementor-inline-items">
+                                    <li class="elementor-icon-list-item elementor-inline-item">
+                                        <span class="elementor-icon-list-icon">
+                                            <svg aria-hidden="true" class="e-font-icon-svg e-far-calendar-alt"
+                                                viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z">
+                                                </path>
+                                            </svg>
+                                        </span>
+                                        <span class="elementor-icon-list-text">Tokens / Cores / Tipos</span>
+                                    </li>
+                                    <li class="elementor-icon-list-item elementor-inline-item">
+                                        <span class="elementor-icon-list-icon">
+                                            <svg aria-hidden="true" class="e-font-icon-svg e-fas-clock"
+                                                viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M256,8C119,8,8,119,8,256S119,504,256,504,504,393,504,256,393,8,256,8Zm92.49,313h0l-20,25a16,16,0,0,1-22.49,2.5h0l-67-49.72a40,40,0,0,1-15-31.23V112a16,16,0,0,1,16-16h32a16,16,0,0,1,16,16V256l58,42.5A16,16,0,0,1,348.49,321Z">
+                                                </path>
+                                            </svg>
+                                        </span>
+                                        <span class="elementor-icon-list-text">Componentes Reais</span>
+                                    </li>
+                                    <li class="elementor-icon-list-item elementor-inline-item">
+                                        <span class="elementor-icon-list-icon">
+                                            <svg aria-hidden="true" class="e-font-icon-svg e-fas-globe"
+                                                viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z">
+                                                </path>
+                                            </svg>
+                                        </span>
+                                        <span class="elementor-icon-list-text">Animações e estados</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     §1 TYPOGRAPHY
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="ds-typography" class="ds-section" style="background:#102A2C;">
+        <div class="ds-section-label">Section 01</div>
+        <div class="ds-section-title">Typography</div>
+        <div class="ds-type-row">
+            <span class="ds-type-name">Heading 1</span>
+            <div class="elementor-element elementor-element-b7e82ad elementor-widget elementor-widget-text-editor"
+                style="margin:0">
+                <div class="elementor-widget-container">
+                    <p>Crie sua consultoria de forma segura</p>
+                </div>
+            </div>
+            <span class="ds-type-spec">Montserrat 500 · 46px · #F3F0E9</span>
+        </div>
+        <div class="ds-type-row">
+            <span class="ds-type-name">Heading 2 – Accent</span>
+            <div class="elementor-element elementor-element-790b39e elementor-widget elementor-widget-heading"
+                style="margin:0">
+                <div class="elementor-widget-container">
+                    <h2 class="elementor-heading-title elementor-size-default">Este workshop é para você</h2>
+                </div>
+            </div>
+            <span class="ds-type-spec">Montserrat 600 · 44px · #B3A275</span>
+        </div>
+        <div class="ds-type-row">
+            <span class="ds-type-name">Heading 2 – Sub</span>
+            <div class="elementor-element elementor-element-be440d5 elementor-widget elementor-widget-heading"
+                style="margin:0">
+                <div class="elementor-widget-container">
+                    <h2 class="elementor-heading-title elementor-size-default">Juliana Paes Garcia</h2>
+                </div>
+            </div>
+            <span class="ds-type-spec">Montserrat 600 · 32px · #B3A275</span>
+        </div>
+        <div class="ds-type-row">
+            <span class="ds-type-name">Heading 2 – Card</span>
+            <div class="elementor-element elementor-element-60500d3 elementor-widget elementor-widget-heading"
+                style="margin:0;width:auto;max-width:none">
+                <div class="elementor-widget-container" style="margin:0;padding:0">
+                    <h2 class="elementor-heading-title elementor-size-default">O QUE VOCÊ VAI RECEBER</h2>
+                </div>
+            </div>
+            <span class="ds-type-spec">Montserrat 800 · 30px · uppercase · #B3A275</span>
+        </div>
+        <div class="ds-type-row">
+            <span class="ds-type-name">Subtitle / Lead</span>
+            <div class="elementor-element elementor-element-c1b574e elementor-widget elementor-widget-text-editor"
+                style="margin:0">
+                <div class="elementor-widget-container">
+                    <p>sem comprometer seu padrão financeiro</p>
+                </div>
+            </div>
+            <span class="ds-type-spec">Montserrat · 24px · #F3F0E9</span>
+        </div>
+        <div class="ds-type-row">
+            <span class="ds-type-name">Body Large</span>
+            <div class="elementor-element elementor-element-0b18fb7 elementor-widget elementor-widget-text-editor"
+                style="margin:0">
+                <div class="elementor-widget-container">
+                    <p>Uma manhã de imersão prática para estruturar sua Consultoria Empresarial com clareza, estratégia
+                        e método validado.</p>
+                </div>
+            </div>
+            <span class="ds-type-spec">Montserrat · 20px · #F3F0E9</span>
+        </div>
+        <div class="ds-type-row">
+            <span class="ds-type-name">Body Bold</span>
+            <div class="elementor-element elementor-element-4f1bcff elementor-widget elementor-widget-text-editor"
+                style="margin:0">
+                <div class="elementor-widget-container">
+                    <p>Juliana é fundadora do Devolvi Meu Crachá e referência em estruturação de negócios de alto valor.
+                    </p>
+                </div>
+            </div>
+            <span class="ds-type-spec">Montserrat 700 · 20px · #102A2C</span>
+        </div>
+        <div class="ds-type-row">
+            <span class="ds-type-name">List Text – M</span>
+            <div class="elementor-element elementor-element-bfba39b elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
+                style="margin:0">
+                <div class="elementor-widget-container">
+                    <ul class="elementor-icon-list-items">
+                        <li class="elementor-icon-list-item"><span class="elementor-icon-list-icon"><svg
+                                    aria-hidden="true" class="e-font-icon-svg e-fas-circle" viewbox="0 0 512 512"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z">
+                                    </path>
+                                </svg></span><span class="elementor-icon-list-text">Quer viver de consultoria
+                                empresarial</span></li>
+                    </ul>
+                </div>
+            </div>
+            <span class="ds-type-spec">Montserrat 500 · 18px · #F3F0E9</span>
+        </div>
+        <div class="ds-type-row">
+            <span class="ds-type-name">Small / Meta</span>
+            <div class="elementor-element elementor-element-84fe320 elementor-widget elementor-widget-text-editor"
+                style="margin:0">
+                <div class="elementor-widget-container">
+                    <p>De <del>R$697</del> por R$49,00</p>
+                </div>
+            </div>
+            <span class="ds-type-spec">Montserrat · 16px · #F3F0E9</span>
+        </div>
+        <div class="ds-type-row">
+            <span class="ds-type-name">Price Large</span>
+            <div class="elementor-element elementor-element-516c406 elementor-widget elementor-widget-text-editor"
+                style="margin:0;width:auto;max-width:none">
+                <div class="elementor-widget-container">
+                    <p style="text-align:left">R$49,00</p>
+                </div>
+            </div>
+            <span class="ds-type-spec">Inter 300 · 52px · #FFFFFF</span>
+        </div>
+        <div class="ds-type-row">
+            <span class="ds-type-name">Caption / Support</span>
+            <div class="elementor-element elementor-element-d26233e elementor-widget elementor-widget-text-editor"
+                style="margin:0;width:auto;max-width:none">
+                <div class="elementor-widget-container">
+                    <p>de <del>R$697,00</del> por apenas:</p>
+                </div>
+            </div>
+            <span class="ds-type-spec">Inter 300 · 16px · #FFFFFF</span>
+        </div>
+        <div class="ds-type-row">
+            <span class="ds-type-name">List Text – S (inline)</span>
+            <div class="elementor-element elementor-element-c0aebd0 elementor-icon-list--layout-inline elementor-align-center elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
+                style="margin:0">
+                <div class="elementor-widget-container">
+                    <ul class="elementor-icon-list-items elementor-inline-items">
+                        <li class="elementor-icon-list-item elementor-inline-item"><span
+                                class="elementor-icon-list-icon"><svg aria-hidden="true"
+                                    class="e-font-icon-svg e-far-calendar-alt" viewbox="0 0 448 512"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z">
+                                    </path>
+                                </svg></span><span class="elementor-icon-list-text">Sábado 28 de Março</span></li>
+                    </ul>
+                </div>
+            </div>
+            <span class="ds-type-spec">Inter · 14px · #F3F0E9</span>
+        </div>
+        <div class="ds-type-row">
+            <span class="ds-type-name">Footer Text</span>
+            <div class="elementor-element elementor-element-1a3d194 elementor-widget elementor-widget-text-editor"
+                style="margin:0;width:auto;max-width:none">
+                <div class="elementor-widget-container">
+                    <p>Ficou com alguma dúvida? Chame nosso suporte.</p>
+                </div>
+            </div>
+            <span class="ds-type-spec">Inter 300 · 24px · #FFFFFF</span>
+        </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     §2 COLORS & SURFACES
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="ds-colors" class="ds-section" style="background:#0a1a1c;">
+        <div class="ds-section-label">Section 02</div>
+        <div class="ds-section-title">Colors &amp; Surfaces</div>
+        <div
+            style="padding:0 5vw 12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#B3A27570;letter-spacing:2px;text-transform:uppercase;">
+            Backgrounds</div>
+        <div class="ds-colors-grid" style="margin-bottom:48px;">
+            <div class="ds-swatch">
+                <div class="ds-swatch-preview" style="background:#102A2C;"></div>
+                <div class="ds-swatch-label">Page / Hero BG</div>
+                <div class="ds-swatch-hex">#102A2C</div>
+                <div class="ds-swatch-desc">Main sections background</div>
+            </div>
+            <div class="ds-swatch">
+                <div class="ds-swatch-preview" style="background:#000707;"></div>
+                <div class="ds-swatch-label">Footer BG</div>
+                <div class="ds-swatch-hex">#000707</div>
+                <div class="ds-swatch-desc">Support / footer area</div>
+            </div>
+            <div class="ds-swatch">
+                <div class="ds-swatch-preview" style="background:#000000;"></div>
+                <div class="ds-swatch-label">Card BG – Dark</div>
+                <div class="ds-swatch-hex">#000000</div>
+                <div class="ds-swatch-desc">Pricing card left panel</div>
+            </div>
+            <div class="ds-swatch">
+                <div class="ds-swatch-preview" style="background:#FFFFFF;border:1px solid #eee;"></div>
+                <div class="ds-swatch-label">Card BG – White</div>
+                <div class="ds-swatch-hex">#FFFFFF</div>
+                <div class="ds-swatch-desc">Pricing card right panel</div>
+            </div>
+            <div class="ds-swatch">
+                <div class="ds-swatch-preview" style="background:#F3F0E9;"></div>
+                <div class="ds-swatch-label">Overlay / Tint</div>
+                <div class="ds-swatch-hex">#F3F0E9</div>
+                <div class="ds-swatch-desc">Warm white. Card overlay 7%</div>
+            </div>
+            <div class="ds-swatch">
+                <div class="ds-swatch-preview" style="background:#FCF8F3;"></div>
+                <div class="ds-swatch-label">Header BG</div>
+                <div class="ds-swatch-hex">#FCF8F3</div>
+                <div class="ds-swatch-desc">Site header / nav</div>
+            </div>
+        </div>
+        <div
+            style="padding:0 5vw 12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#B3A27570;letter-spacing:2px;text-transform:uppercase;">
+            Brand &amp; Text</div>
+        <div class="ds-colors-grid" style="margin-bottom:48px;">
+            <div class="ds-swatch">
+                <div class="ds-swatch-preview" style="background:#B3A275;"></div>
+                <div class="ds-swatch-label">Gold – Headings</div>
+                <div class="ds-swatch-hex">#B3A275</div>
+                <div class="ds-swatch-desc">All section headings, card titles, icons</div>
+            </div>
+            <div class="ds-swatch">
+                <div class="ds-swatch-preview" style="background:#F3F0E9;"></div>
+                <div class="ds-swatch-label">Warm White – Body</div>
+                <div class="ds-swatch-hex">#F3F0E9</div>
+                <div class="ds-swatch-desc">Body text on dark bg</div>
+            </div>
+            <div class="ds-swatch">
+                <div class="ds-swatch-preview" style="background:#16e463;"></div>
+                <div class="ds-swatch-label">Accent Green</div>
+                <div class="ds-swatch-hex">#16e463</div>
+                <div class="ds-swatch-desc">Hero headline inline emphasis span</div>
+            </div>
+            <div class="ds-swatch">
+                <div class="ds-swatch-preview" style="background:#F9C30C;"></div>
+                <div class="ds-swatch-label">Yellow – Icon Meta</div>
+                <div class="ds-swatch-hex">#F9C30C</div>
+                <div class="ds-swatch-desc">Calendar / clock / globe icons fill</div>
+            </div>
+            <div class="ds-swatch">
+                <div class="ds-swatch-preview" style="background:#FFFFFF;border:1px solid #444;"></div>
+                <div class="ds-swatch-label">White – Price</div>
+                <div class="ds-swatch-hex">#FFFFFF</div>
+                <div class="ds-swatch-desc">Price text, footer text, carousel arrows</div>
+            </div>
+            <div class="ds-swatch">
+                <div class="ds-swatch-preview" style="background:#CAA87C;"></div>
+                <div class="ds-swatch-label">Warm Gold – Border</div>
+                <div class="ds-swatch-hex">#CAA87C</div>
+                <div class="ds-swatch-desc">Carousel slide image border</div>
+            </div>
+        </div>
+        <div
+            style="padding:0 5vw 12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#B3A27570;letter-spacing:2px;text-transform:uppercase;">
+            Gradients</div>
+        <div class="ds-colors-grid" style="margin-bottom:48px;">
+            <div class="ds-swatch" style="min-width:260px;">
+                <div class="ds-swatch-preview" style="background:linear-gradient(90deg,#00FF5F 0%,#25D366 100%);"></div>
+                <div class="ds-swatch-label">CTA Button Gradient</div>
+                <div class="ds-swatch-hex">linear-gradient(90deg, #00FF5F → #25D366)</div>
+                <div class="ds-swatch-desc">All primary CTA buttons</div>
+            </div>
+            <div class="ds-swatch" style="min-width:180px;">
+                <div class="ds-swatch-preview" style="background:#B80505;"></div>
+                <div class="ds-swatch-label">Progress – Urgency</div>
+                <div class="ds-swatch-hex">#B80505</div>
+                <div class="ds-swatch-desc">Progress bar fill (scarcity)</div>
+            </div>
+        </div>
+        <div
+            style="padding:0 5vw 12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#B3A27570;letter-spacing:2px;text-transform:uppercase;">
+            Borders &amp; Shadows</div>
+        <div class="ds-colors-grid">
+            <div class="ds-swatch" style="min-width:200px;">
+                <div class="ds-swatch-preview"
+                    style="background:transparent;box-shadow:0 0 10px 0 rgba(255,255,255,0.5);border:1px solid #555;">
+                </div>
+                <div class="ds-swatch-label">Card Shell Glow</div>
+                <div class="ds-swatch-hex">box-shadow: 0 0 10px rgba(255,255,255,.5)</div>
+                <div class="ds-swatch-desc">Pricing card outer glow</div>
+            </div>
+            <div class="ds-swatch" style="min-width:200px;">
+                <div class="ds-swatch-preview"
+                    style="background:linear-gradient(90deg,#00FF5F,#25D366);box-shadow:0 0 50px 0 #FBBB63;"></div>
+                <div class="ds-swatch-label">CTA Button Glow</div>
+                <div class="ds-swatch-hex">box-shadow: 0 0 50px #FBBB63</div>
+                <div class="ds-swatch-desc">Warm amber glow on all CTA buttons</div>
+            </div>
+            <div class="ds-swatch" style="min-width:200px;">
+                <div class="ds-swatch-preview"
+                    style="background:transparent;border:1px solid #F3F0E9;border-radius:15px;"></div>
+                <div class="ds-swatch-label">Content Card Border</div>
+                <div class="ds-swatch-hex">1px solid + border-radius: 15px</div>
+                <div class="ds-swatch-desc">elementor-element-2b120da / 187ce51</div>
+            </div>
+            <div class="ds-swatch" style="min-width:200px;">
+                <div class="ds-swatch-preview"
+                    style="background:transparent;border:1px solid #CAA87C;border-radius:15px;"></div>
+                <div class="ds-swatch-label">Carousel Image Border</div>
+                <div class="ds-swatch-hex">border: 1px solid #CAA87C · radius: 15px</div>
+                <div class="ds-swatch-desc">Testimonial carousel slide images</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     §3 UI COMPONENTS
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="ds-components" class="ds-section" style="background:#102A2C;">
+        <div class="ds-section-label">Section 03</div>
+        <div class="ds-section-title">UI Components</div>
+
+        <!-- BUTTONS -->
+        <div
+            style="padding:0 5vw 12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#B3A27570;letter-spacing:2px;text-transform:uppercase;">
+            Buttons</div>
+        <div class="ds-states-row">
+            <div class="ds-state-item">
+                <div class="ds-state-label">Default (pulse)</div>
+                <div class="elementor-element elementor-element-7bd8c60 elementor-align-justify pulse elementor-widget elementor-widget-button"
+                    style="margin:0;display:inline-block">
+                    <div class="elementor-widget-container">
+                        <div class="elementor-button-wrapper"><a
+                                class="elementor-button elementor-button-link elementor-size-xs" href="#"><span
+                                    class="elementor-button-content-wrapper"><span class="elementor-button-text">Quero
+                                        criar minha consultoria</span></span></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ds-state-item">
+                <div class="ds-state-label">No Animation (hover to test)</div>
+                <div class="elementor-element elementor-element-7bd8c60 elementor-align-justify elementor-widget elementor-widget-button"
+                    style="margin:0;display:inline-block">
+                    <div class="elementor-widget-container">
+                        <div class="elementor-button-wrapper"><a
+                                class="elementor-button elementor-button-link elementor-size-xs" href="#"><span
+                                    class="elementor-button-content-wrapper"><span
+                                        class="elementor-button-text">Garantir meu ingresso</span></span></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ds-state-item">
+                <div class="ds-state-label">Form Submit</div>
+                <div class="elementor-widget-container">
+                    <button class="elementor-button elementor-size-sm" type="button"><span><span
+                                class="elementor-button-icon"></span><span
+                                class="elementor-button-text">Enviar</span></span></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROGRESS BAR -->
+        <div
+            style="padding:24px 5vw 12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#B3A27570;letter-spacing:2px;text-transform:uppercase;">
+            Progress Bar</div>
+        <div style="padding:0 5vw 24px;">
+            <div class="elementor-element elementor-element-59bb8ad elementor-widget elementor-widget-progress"
+                style="margin:0">
+                <div class="elementor-widget-container">
+                    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="27"
+                        aria-valuetext="27% (Ingressos Vendidos)" class="elementor-progress-wrapper" role="progressbar">
+                        <div class="elementor-progress-bar" data-max="27" style="width:27%;">
+                            <span class="elementor-progress-text">Ingressos Vendidos</span>
+                            <span class="elementor-progress-percentage">27%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ICON LIST – CIRCLE BULLETS -->
+        <div
+            style="padding:0 5vw 12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#B3A27570;letter-spacing:2px;text-transform:uppercase;">
+            Icon List – Circle Bullets (Montserrat 18px)</div>
+        <div style="padding:0 5vw 32px;">
+            <div class="elementor-element elementor-element-bfba39b elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
+                style="margin:0">
+                <div class="elementor-widget-container">
+                    <ul class="elementor-icon-list-items">
+                        <li class="elementor-icon-list-item"><span class="elementor-icon-list-icon"><svg
+                                    aria-hidden="true" class="e-font-icon-svg e-fas-circle" viewbox="0 0 512 512"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z">
+                                    </path>
+                                </svg></span><span class="elementor-icon-list-text">Quer viver de consultoria
+                                empresarial, mas não sabe por onde começar</span></li>
+                        <li class="elementor-icon-list-item"><span class="elementor-icon-list-icon"><svg
+                                    aria-hidden="true" class="e-font-icon-svg e-fas-circle" viewbox="0 0 512 512"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z">
+                                    </path>
+                                </svg></span><span class="elementor-icon-list-text">Tem muito conhecimento, mas não sabe
+                                como estruturar em um negócio</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ICON LIST – CHECK BULLETS -->
+        <div
+            style="padding:0 5vw 12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#B3A27570;letter-spacing:2px;text-transform:uppercase;">
+            Icon List – Check Bullets (Montserrat 18px)</div>
+        <div style="padding:0 5vw 32px;">
+            <div class="elementor-element elementor-element-028ab83 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
+                style="margin:0">
+                <div class="elementor-widget-container">
+                    <ul class="elementor-icon-list-items">
+                        <li class="elementor-icon-list-item"><span class="elementor-icon-list-icon"><svg
+                                    aria-hidden="true" class="e-font-icon-svg e-fas-check" viewbox="0 0 512 512"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                    </path>
+                                </svg></span><span class="elementor-icon-list-text">Diagnóstico do seu potencial e
+                                bagagem única</span></li>
+                        <li class="elementor-icon-list-item"><span class="elementor-icon-list-icon"><svg
+                                    aria-hidden="true" class="e-font-icon-svg e-fas-check" viewbox="0 0 512 512"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                    </path>
+                                </svg></span><span class="elementor-icon-list-text">Definição do nicho mais lucrativo
+                                para seu perfil</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ICON LIST – CHECK-CIRCLE on WHITE -->
+        <div
+            style="padding:0 5vw 12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#B3A27570;letter-spacing:2px;text-transform:uppercase;">
+            Icon List – Check-Circle on White (Inter 600 16px)</div>
+        <div style="padding:0 5vw 32px;background:#FFFFFF;margin:0 5vw 32px;border-radius:12px;">
+            <div class="elementor-element elementor-element-4b93d9f elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
+                style="margin:0">
+                <div class="elementor-widget-container" style="padding:16px 0 0 10px;">
+                    <ul class="elementor-icon-list-items">
+                        <li class="elementor-icon-list-item"><span class="elementor-icon-list-icon"><svg
+                                    aria-hidden="true" class="e-font-icon-svg e-fas-check-circle" viewbox="0 0 512 512"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z">
+                                    </path>
+                                </svg></span><span class="elementor-icon-list-text">1 manhã de imersão em estruturação
+                                de negócio</span></li>
+                        <li class="elementor-icon-list-item"><span class="elementor-icon-list-icon"><svg
+                                    aria-hidden="true" class="e-font-icon-svg e-fas-check-circle" viewbox="0 0 512 512"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z">
+                                    </path>
+                                </svg></span><span class="elementor-icon-list-text">7 dias de garantia
+                                incondicional</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- RATING DOTS -->
+        <div
+            style="padding:0 5vw 12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#B3A27570;letter-spacing:2px;text-transform:uppercase;">
+            Rating (Dot Style)</div>
+        <div style="padding:0 5vw 32px;">
+            <div class="elementor-element elementor-element-b5bda62 elementor-widget elementor-widget-rating"
+                style="margin:0">
+                <div class="elementor-widget-container">
+                    <div class="e-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
+                        <meta content="0" itemprop="worstRating" />
+                        <meta content="10" itemprop="bestRating" />
+                        <div aria-label="Classificado como 10 de 10" class="e-rating-wrapper" content="10"
+                            itemprop="ratingValue" role="img">
+                            <div class="e-icon">
+                                <div class="e-icon-wrapper e-icon-marked"><svg aria-hidden="true"
+                                        class="e-font-icon-svg e-fas-circle" viewbox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z">
+                                        </path>
+                                    </svg></div>
+                                <div class="e-icon-wrapper e-icon-unmarked"><svg aria-hidden="true"
+                                        class="e-font-icon-svg e-fas-circle" viewbox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z">
+                                        </path>
+                                    </svg></div>
+                            </div>
+                            <div class="e-icon">
+                                <div class="e-icon-wrapper e-icon-marked"><svg aria-hidden="true"
+                                        class="e-font-icon-svg e-fas-circle" viewbox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z">
+                                        </path>
+                                    </svg></div>
+                                <div class="e-icon-wrapper e-icon-unmarked"><svg aria-hidden="true"
+                                        class="e-font-icon-svg e-fas-circle" viewbox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z">
+                                        </path>
+                                    </svg></div>
+                            </div>
+                            <div class="e-icon">
+                                <div class="e-icon-wrapper e-icon-marked"><svg aria-hidden="true"
+                                        class="e-font-icon-svg e-fas-circle" viewbox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z">
+                                        </path>
+                                    </svg></div>
+                                <div class="e-icon-wrapper e-icon-unmarked"><svg aria-hidden="true"
+                                        class="e-font-icon-svg e-fas-circle" viewbox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z">
+                                        </path>
+                                    </svg></div>
+                            </div>
+                            <div class="e-icon">
+                                <div class="e-icon-wrapper e-icon-marked"><svg aria-hidden="true"
+                                        class="e-font-icon-svg e-fas-circle" viewbox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z">
+                                        </path>
+                                    </svg></div>
+                                <div class="e-icon-wrapper e-icon-unmarked"><svg aria-hidden="true"
+                                        class="e-font-icon-svg e-fas-circle" viewbox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z">
+                                        </path>
+                                    </svg></div>
+                            </div>
+                            <div class="e-icon">
+                                <div class="e-icon-wrapper e-icon-marked"><svg aria-hidden="true"
+                                        class="e-font-icon-svg e-fas-circle" viewbox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z">
+                                        </path>
+                                    </svg></div>
+                                <div class="e-icon-wrapper e-icon-unmarked"><svg aria-hidden="true"
+                                        class="e-font-icon-svg e-fas-circle" viewbox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z">
+                                        </path>
+                                    </svg></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORM INPUTS -->
+        <div
+            style="padding:0 5vw 12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#B3A27570;letter-spacing:2px;text-transform:uppercase;">
+            Form Inputs</div>
+        <div class="ds-states-row" style="background:#1a2f31;border-radius:12px;margin:0 5vw 32px;">
+            <div class="ds-state-item" style="align-items:flex-start;flex:1;min-width:180px;">
+                <div class="ds-state-label">Text Input – Default</div>
+                <div class="elementor-field-type-text elementor-field-group elementor-column" style="width:100%;">
+                    <label class="elementor-field-label" style="display:block;margin-bottom:4px;">Nome</label>
+                    <input class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Nome"
+                        type="text" style="width:100%;box-sizing:border-box;">
+                </div>
+            </div>
+            <div class="ds-state-item" style="align-items:flex-start;flex:1;min-width:180px;">
+                <div class="ds-state-label">Email Input</div>
+                <div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-required"
+                    style="width:100%;">
+                    <label class="elementor-field-label" style="display:block;margin-bottom:4px;">Email</label>
+                    <input aria-required="true" class="elementor-field elementor-size-sm elementor-field-textual"
+                        placeholder="Email" required type="email" style="width:100%;box-sizing:border-box;">
+                </div>
+            </div>
+            <div class="ds-state-item" style="align-items:flex-start;flex:1;min-width:180px;">
+                <div class="ds-state-label">Select Dropdown</div>
+                <div class="elementor-field-type-select elementor-field-group elementor-column" style="width:100%;">
+                    <label class="elementor-field-label" style="display:block;margin-bottom:4px;">Onde você espera
+                        chegar?</label>
+                    <div class="elementor-field elementor-select-wrapper remove-before" style="width:100%;">
+                        <div class="select-caret-down-wrapper"><svg aria-hidden="true"
+                                class="e-font-icon-svg e-eicon-caret-down" viewbox="0 0 571.4 571.4"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M571 393Q571 407 561 418L311 668Q300 679 286 679T261 668L11 418Q0 407 0 393T11 368 36 357H536Q550 357 561 368T571 393Z">
+                                </path>
+                            </svg></div>
+                        <select class="elementor-field-textual elementor-size-sm" style="width:100%;">
+                            <option>Desenvolver negócio de alto valor</option>
+                            <option>Estruturar e crescer meu negócio</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ICON-BOX (WhatsApp) -->
+        <div
+            style="padding:0 5vw 12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#B3A27570;letter-spacing:2px;text-transform:uppercase;">
+            Icon Box – Framed Circle (scale 1.05 on hover)</div>
+        <div style="padding:0 5vw 32px;">
+            <div class="elementor-element elementor-element-87fc6cd elementor-view-framed e-transform elementor-shape-circle elementor-mobile-position-top elementor-vertical-align-top elementor-widget elementor-widget-icon-box"
+                style="margin:0;display:inline-block">
+                <div class="elementor-widget-container">
+                    <div class="elementor-icon-box-wrapper">
+                        <div class="elementor-icon-box-icon">
+                            <a class="elementor-icon" href="#" tabindex="-1">
+                                <svg aria-hidden="true" class="e-font-icon-svg e-fab-whatsapp" viewbox="0 0 448 512"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     §4 LAYOUT & SPACING
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="ds-layout" class="ds-section" style="background:#0a1a1c;">
+        <div class="ds-section-label">Section 04</div>
+        <div class="ds-section-title">Layout &amp; Spacing</div>
+
+        <!-- Pattern A: Hero – 2-col 50/50 flex -->
+        <div class="ds-layout-pattern">
+            <div class="ds-layout-label-bar">Pattern A · Hero – 2-col 50/50 flex · min-height: 100vh · gap: 0</div>
+            <div style="padding:24px;background:#102A2C;">
+                <div
+                    style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px dashed #B3A27540;border-radius:8px;overflow:hidden;">
+                    <div
+                        style="background:#B3A27515;padding:24px;border-right:1px dashed #B3A27540;font-family:'Montserrat',sans-serif;font-size:13px;color:#B3A275;">
+                        Left col (50%) · flex direction: column · align-items: flex-start<br><br>Logo → Headline →
+                        Subtitle → CTA Button → Meta Text → Progress Bar</div>
+                    <div
+                        style="background:#B3A27508;padding:24px;font-family:'Montserrat',sans-serif;font-size:13px;color:#B3A275;">
+                        Right col (50%) · flex direction: column · justify-content: center<br><br>Hero Image → Inline
+                        Icon List (calendar · clock · globe)</div>
+                </div>
+                <div style="margin-top:12px;font-family:'Inter',sans-serif;font-size:11px;color:#B3A27580;">max-width:
+                    1200px · container-max-width: 1280px · padding-top / bottom: 0</div>
+            </div>
+        </div>
+
+        <!-- Pattern B: 2-col grid card (content grid) -->
+        <div class="ds-layout-pattern">
+            <div class="ds-layout-label-bar">Pattern B · Content Card – 2-col grid · border-radius: 15px · overlay 7%
+            </div>
+            <div style="padding:24px;background:#102A2C;">
+                <div
+                    style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid #F3F0E9;border-radius:15px;overflow:hidden;position:relative;">
+                    <div style="position:absolute;inset:0;background:#F3F0E9;opacity:.07;pointer-events:none;"></div>
+                    <div
+                        style="padding:24px;border-right:1px dashed #B3A27540;font-family:'Montserrat',sans-serif;font-size:13px;color:#B3A275;">
+                        Left col: Image (300×300 · img width:100%) centered</div>
+                    <div style="padding:24px;font-family:'Montserrat',sans-serif;font-size:13px;color:#B3A275;">Right
+                        col (flex): Heading 2 Sub → Check-list items</div>
+                </div>
+                <div style="margin-top:12px;font-family:'Inter',sans-serif;font-size:11px;color:#B3A27580;">margin-top:
+                    45px (first card) / 75px (second card) · grid-template-columns: repeat(2,1fr)</div>
+            </div>
+        </div>
+
+        <!-- Pattern C: Pricing 2-col split -->
+        <div class="ds-layout-pattern">
+            <div class="ds-layout-label-bar">Pattern C · Pricing – split card · left: black 50px-radius
+                top-left/bottom-left · right: white</div>
+            <div style="padding:24px;background:#102A2C;">
+                <div
+                    style="display:grid;grid-template-columns:1fr 1fr;border:none;border-radius:50px;overflow:hidden;box-shadow:0 0 10px rgba(255,255,255,.5);">
+                    <div
+                        style="background:#000;padding:24px;border-radius:50px 0 0 50px;font-family:'Montserrat',sans-serif;font-size:13px;color:#B3A275;">
+                        Dark panel: Logo image · Heading "GARANTA SEU INGRESSO" · Dot rating · price from/to · CTA
+                        gradient button · icon list date/time/online</div>
+                    <div
+                        style="background:#fff;padding:24px;border-radius:0 50px 50px 0;font-family:'Montserrat',sans-serif;font-size:13px;color:#102A2C;">
+                        White panel: Heading "O QUE VOCÊ VAI RECEBER" uppercase gold · check-circle list (7 items)</div>
+                </div>
+                <div style="margin-top:12px;font-family:'Inter',sans-serif;font-size:11px;color:#B3A27580;">section
+                    padding-top/bottom: 75px · background image overlay (ficou-para-amanha.png)</div>
+            </div>
+        </div>
+
+        <!-- Spacing tokens -->
+        <div
+            style="padding:0 5vw 12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#B3A27570;letter-spacing:2px;text-transform:uppercase;">
+            Key Spacing Values</div>
+        <div style="padding:0 5vw;display:flex;flex-wrap:wrap;gap:16px;">
+            <div
+                style="background:#B3A27515;border:1px solid #B3A27530;border-radius:8px;padding:12px 20px;font-family:'Inter',sans-serif;font-size:12px;color:#F3F0E9;">
+                <strong style="color:#B3A275">Container</strong><br>max-width: 1280px<br>laptop: 900px<br>tablet: 700px
+            </div>
+            <div
+                style="background:#B3A27515;border:1px solid #B3A27530;border-radius:8px;padding:12px 20px;font-family:'Inter',sans-serif;font-size:12px;color:#F3F0E9;">
+                <strong style="color:#B3A275">Section padding</strong><br>vertical: 50–75px<br>horizontal: 0
+            </div>
+            <div
+                style="background:#B3A27515;border:1px solid #B3A27530;border-radius:8px;padding:12px 20px;font-family:'Inter',sans-serif;font-size:12px;color:#F3F0E9;">
+                <strong style="color:#B3A275">Widget spacing</strong><br>margin-block-end: 20px<br>widgets-spacing: 20px
+                × 20px
+            </div>
+            <div
+                style="background:#B3A27515;border:1px solid #B3A27530;border-radius:8px;padding:12px 20px;font-family:'Inter',sans-serif;font-size:12px;color:#F3F0E9;">
+                <strong style="color:#B3A275">List item gap</strong><br>icon-list: 35px (M) / 40px (S)<br>check-circle:
+                20px
+            </div>
+            <div
+                style="background:#B3A27515;border:1px solid #B3A27530;border-radius:8px;padding:12px 20px;font-family:'Inter',sans-serif;font-size:12px;color:#F3F0E9;">
+                <strong style="color:#B3A275">Border radii</strong><br>cards: 15px · pricing: 50px<br>progress: 95–100px
+            </div>
+        </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     §5 MOTION & INTERACTION
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="ds-motion" class="ds-section" style="background:#102A2C;">
+        <div class="ds-section-label">Section 05</div>
+        <div class="ds-section-title">Motion &amp; Interaction</div>
+        <div class="ds-motion-grid">
+
+            <!-- Pulse CTA -->
+            <div class="ds-motion-card">
+                <div class="ds-motion-card-label">Pulse – CTA Button</div>
+                <div class="elementor-element elementor-element-7bd8c60 elementor-align-justify pulse elementor-widget elementor-widget-button"
+                    style="margin:0;display:inline-block">
+                    <div class="elementor-widget-container">
+                        <div class="elementor-button-wrapper"><a
+                                class="elementor-button elementor-button-link elementor-size-xs" href="#"><span
+                                    class="elementor-button-content-wrapper"><span class="elementor-button-text">Quero
+                                        minha consultoria</span></span></a></div>
+                    </div>
+                </div>
+                <div style="font-family:'Inter',sans-serif;font-size:11px;color:#B3A27570;text-align:center;">animation:
+                    pulse 0.7s infinite alternate<br>scale: 1 → 1.1<br>class: .pulse</div>
+            </div>
+
+            <!-- fadeIn entrance -->
+            <div class="ds-motion-card">
+                <div class="ds-motion-card-label">fadeIn – Entrance</div>
+                <div class="elementor-element elementor-element-bfba39b elementor-widget animated-fast animated fadeIn"
+                    style="margin:0;animation-duration:1s;">
+                    <div style="font-family:'Montserrat',sans-serif;font-size:16px;color:#F3F0E9;padding:8px 0;">● Item
+                        da lista fadeIn</div>
+                </div>
+                <div style="font-family:'Inter',sans-serif;font-size:11px;color:#B3A27570;text-align:center;">class:
+                    animated fadeIn<br>_animation_mobile: fadeIn<br>Used on: icon-lists, text blocks</div>
+            </div>
+
+            <!-- fadeInRight entrance -->
+            <div class="ds-motion-card">
+                <div class="ds-motion-card-label">fadeInRight – Carousel</div>
+                <div class="animated-fast animated fadeInRight"
+                    style="animation-duration:1s;background:#B3A27520;border:1px solid #CAA87C;border-radius:15px;padding:16px;font-family:'Montserrat',sans-serif;font-size:13px;color:#F3F0E9;">
+                    Testimonial slide image
+                </div>
+                <div style="font-family:'Inter',sans-serif;font-size:11px;color:#B3A27570;text-align:center;">class:
+                    animated-fast animated fadeInRight<br>_animation: fadeInRight<br>carousel widget swiper</div>
+            </div>
+
+            <!-- Hover scale icon-box -->
+            <div class="ds-motion-card">
+                <div class="ds-motion-card-label">Hover Scale – Icon Box</div>
+                <div class="elementor-element elementor-element-87fc6cd elementor-view-framed e-transform elementor-shape-circle elementor-widget elementor-widget-icon-box"
+                    style="margin:0;cursor:pointer;">
+                    <div class="elementor-widget-container">
+                        <div class="elementor-icon-box-wrapper">
+                            <div class="elementor-icon-box-icon"><a class="elementor-icon" href="#" tabindex="-1"><svg
+                                        aria-hidden="true" class="e-font-icon-svg e-fab-whatsapp" viewbox="0 0 448 512"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157z">
+                                        </path>
+                                    </svg></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div style="font-family:'Inter',sans-serif;font-size:11px;color:#B3A27570;text-align:center;">:hover
+                    transform scale: 1.05<br>_transform_scale_effect_hover<br>background: #44FF61</div>
+            </div>
+
+            <!-- Transition icon colors -->
+            <div class="ds-motion-card">
+                <div class="ds-motion-card-label">Color Transition – Icons</div>
+                <div style="display:flex;gap:16px;align-items:center;">
+                    <svg style="width:24px;height:24px;fill:#B3A275;transition:fill 0.3s;" viewbox="0 0 512 512"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                    </svg>
+                    <span style="font-family:'Inter',sans-serif;font-size:11px;color:#B3A27570;">→ transition:fill
+                        0.3s</span>
+                </div>
+                <div style="font-family:'Inter',sans-serif;font-size:11px;color:#B3A27570;text-align:center;">icon fill:
+                    #B3A275<br>transition: fill 0.3s / color 0.3s<br>Applied to all icon-list SVGs</div>
+            </div>
+
+            <!-- Swiper carousel -->
+            <div class="ds-motion-card">
+                <div class="ds-motion-card-label">Swiper Carousel</div>
+                <div
+                    style="font-family:'Inter',sans-serif;font-size:12px;color:#F3F0E9;text-align:left;line-height:1.7;">
+                    <span style="color:#B3A275;">autoplay_speed:</span> 400001ms<br>
+                    <span style="color:#B3A275;">speed:</span> 502ms<br>
+                    <span style="color:#B3A275;">navigation:</span> both arrows<br>
+                    <span style="color:#B3A275;">infinite:</span> yes<br>
+                    <span style="color:#B3A275;">pause_on_hover:</span> yes<br>
+                    <span style="color:#B3A275;">slide border:</span> 1px #CAA87C · r:15px
+                </div>
+            </div>
+
+            <!-- Section bg transition -->
+            <div class="ds-motion-card">
+                <div class="ds-motion-card-label">Section BG Transition</div>
+                <div
+                    style="font-family:'Inter',sans-serif;font-size:12px;color:#F3F0E9;text-align:left;line-height:1.7;">
+                    <span style="color:#B3A275;">transition:</span> background 0.3s,<br>border 0.3s, border-radius
+                    0.3s,<br>box-shadow 0.3s<br><br>Applied to: elementor-element-6e8796f
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     §6 ICONS
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="ds-icons" class="ds-section" style="background:#0a1a1c;padding-bottom:80px;">
+        <div class="ds-section-label">Section 06</div>
+        <div class="ds-section-title">Icons</div>
+        <div style="padding:0 5vw 12px;font-family:'Inter',sans-serif;font-size:11px;color:#B3A27570;">All icons are
+            inline SVG via Elementor's e-font-icon-svg system. No external icon font loaded for these icons. Fill/color
+            is controlled via CSS on the parent .elementor-icon-list-icon svg selector.</div>
+        <div class="ds-icons-grid" style="margin-top:32px;">
+
+            <div class="ds-icon-item">
+                <svg style="fill:#B3A275;width:28px;height:28px;" viewbox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                </svg>
+                <div class="ds-icon-label">fas-circle<br>#B3A275<br>18px icon-list</div>
+            </div>
+
+            <div class="ds-icon-item">
+                <svg style="fill:#B3A275;width:28px;height:28px;" viewbox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                    </path>
+                </svg>
+                <div class="ds-icon-label">fas-check<br>#B3A275<br>18px icon-list</div>
+            </div>
+
+            <div class="ds-icon-item">
+                <svg style="fill:#B3A275;width:28px;height:28px;" viewbox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z">
+                    </path>
+                </svg>
+                <div class="ds-icon-label">fas-check-circle<br>#B3A275<br>14px icon-list</div>
+            </div>
+
+            <div class="ds-icon-item">
+                <svg style="fill:#F9C30C;width:28px;height:28px;" viewbox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z">
+                    </path>
+                </svg>
+                <div class="ds-icon-label">far-calendar-alt<br>#F9C30C<br>14px inline list</div>
+            </div>
+
+            <div class="ds-icon-item">
+                <svg style="fill:#F9C30C;width:28px;height:28px;" viewbox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M256,8C119,8,8,119,8,256S119,504,256,504,504,393,504,256,393,8,256,8Zm92.49,313h0l-20,25a16,16,0,0,1-22.49,2.5h0l-67-49.72a40,40,0,0,1-15-31.23V112a16,16,0,0,1,16-16h32a16,16,0,0,1,16,16V256l58,42.5A16,16,0,0,1,348.49,321Z">
+                    </path>
+                </svg>
+                <div class="ds-icon-label">fas-clock<br>#F9C30C<br>14px inline list</div>
+            </div>
+
+            <div class="ds-icon-item">
+                <svg style="fill:#F9C30C;width:28px;height:28px;" viewbox="0 0 496 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z">
+                    </path>
+                </svg>
+                <div class="ds-icon-label">fas-globe<br>#F9C30C<br>14px inline list</div>
+            </div>
+
+            <div class="ds-icon-item">
+                <svg style="fill:#44FF61;width:44px;height:44px;" viewbox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157z">
+                    </path>
+                </svg>
+                <div class="ds-icon-label">fab-whatsapp<br>#44FF61<br>44px icon-box</div>
+            </div>
+
+            <div class="ds-icon-item">
+                <svg style="fill:#FFFFFF;width:24px;height:24px;" viewbox="0 0 1000 1000"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M646 125C629 125 613 133 604 142L308 442C296 454 292 471 292 487 292 504 296 521 308 533L604 854C617 867 629 875 646 875 663 875 679 871 692 858 704 846 713 829 713 812 713 796 708 779 692 767L438 487 692 225C700 217 708 204 708 187 708 171 704 154 692 142 675 129 663 125 646 125Z">
+                    </path>
+                </svg>
+                <div class="ds-icon-label">eicon-chevron-left<br>#FFFFFF<br>24px swiper nav</div>
+            </div>
+
+            <div class="ds-icon-item">
+                <svg style="fill:#FFFFFF;width:24px;height:24px;" viewbox="0 0 1000 1000"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M696 533C708 521 713 504 713 487 713 471 708 454 696 446L400 146C388 133 375 125 354 125 338 125 325 129 313 142 300 154 292 171 292 187 292 204 296 221 308 233L563 492 304 771C292 783 288 800 288 817 288 833 296 850 308 863 321 871 338 875 354 875 371 875 388 867 400 854L696 533Z">
+                    </path>
+                </svg>
+                <div class="ds-icon-label">eicon-chevron-right<br>#FFFFFF<br>24px swiper nav</div>
+            </div>
+
+            <div class="ds-icon-item">
+                <svg style="fill:#102A2C;width:24px;height:24px;" viewbox="0 0 571.4 571.4"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M571 393Q571 407 561 418L311 668Q300 679 286 679T261 668L11 418Q0 407 0 393T11 368 36 357H536Q550 357 561 368T571 393Z">
+                    </path>
+                </svg>
+                <div class="ds-icon-label">eicon-caret-down<br>#102A2C<br>select dropdown</div>
+            </div>
+        </div>
+
+        <!-- Size variants info -->
+        <div style="padding:32px 5vw 0;font-family:'Inter',sans-serif;font-size:12px;color:#B3A27570;line-height:1.8;">
+            <strong style="color:#B3A275">Icon size variants used:</strong><br>
+            · 44px – icon-box (WhatsApp framed circle)<br>
+            · 28px – illustration in DS (actual rendered size varies per context)<br>
+            · 18px – <code
+                style="background:#B3A27520;padding:1px 4px;border-radius:3px;">--e-icon-list-icon-size</code> for
+            circle/check bullet lists<br>
+            · 14px – <code
+                style="background:#B3A27520;padding:1px 4px;border-radius:3px;">--e-icon-list-icon-size</code> for
+            inline calendar/clock/globe lists<br>
+            · 4px – rating dot icon (appears as decorative dots in e-rating widget)<br>
+            · 24px – swiper navigation chevrons
+        </div>
+    </section>
+</body>
+
+</html>

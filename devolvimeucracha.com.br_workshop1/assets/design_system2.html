@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Design System V2 – Devolvi Meu Crachá</title>
+    <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
+
+    <!-- References to existing CSS -->
+    <link href="frontend_1ad6735e0777.css" id="hfe-widgets-style-css" media="all" rel="stylesheet" />
+    <link href="header-footer-elementor_e2bcd39f3c00.css" id="hfe-style-css" media="all" rel="stylesheet" />
+    <link href="custom-frontend_3f8afc9343c2.css" id="elementor-frontend-css" media="all" rel="stylesheet" />
+    <link href="poppins_32ad1fd07af9.css" rel="stylesheet" />
+    <link href="montserrat_7052a8f1cae3.css" rel="stylesheet" />
+    <link href="inter_8b6e16662bbc.css" rel="stylesheet" />
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <style>
+        /* ── Base Variables (Aesthetics Branco/Transparente) ── */
+        :root {
+            /* Colors */
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8F9FA;
+            --bg-glass: rgba(255, 255, 255, 0.7);
+            --bg-dark: #0A1A1C;
+            --text-primary: #0A1A1C;
+            --text-secondary: #6B7280;
+            --accent-gold: #B3A275;
+            --accent-green: #16e463;
+            --accent-glow: rgba(179, 162, 117, 0.4);
+            --accent-glow-green: rgba(22, 228, 99, 0.4);
+
+            /* Typography */
+            --font-primary: 'Montserrat', sans-serif;
+            --font-secondary: 'Inter', sans-serif;
+
+            /* Effects */
+            --mouse-x: 50%;
+            --mouse-y: 50%;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        /* ── Navigation ── */
+        .ds-nav {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            background: var(--bg-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .ds-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .ds-nav a {
+            font-family: var(--font-primary);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 18px 24px;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .ds-nav a::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .ds-nav a:hover {
+            color: var(--text-primary);
+        }
+
+        .ds-nav a:hover::after {
+            width: 100%;
+        }
+
+        .ds-nav-brand {
+            font-family: var(--font-primary);
+            font-size: 14px;
+            font-weight: 900;
+            color: var(--text-primary);
+            padding: 16px 24px;
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ── Typography & Lettering Transparente ── */
+        .text-transparent-outline {
+            -webkit-text-stroke: 1.5px var(--text-primary);
+            color: transparent;
+            position: relative;
+            z-index: 10;
+        }
+
+        .text-transparent-outline-gold {
+            -webkit-text-stroke: 1.5px var(--accent-gold);
+            color: transparent;
+        }
+
+        .text-transparent-outline-white {
+            -webkit-text-stroke: 1.5px #FFFFFF;
+            color: transparent;
+        }
+
+        /* ── Hero Section (Primeira Dobra) ── */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 120px 5vw;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+
+        /* Grid Background Pattern */
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        /* Clip reveal columns pattern */
+        .bg-clip-columns {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .clip-column {
+            border-right: 1px solid rgba(0, 0, 0, 0.02);
+            height: 100%;
+            clip-path: inset(100% 0 0 0);
+            transition: clip-path 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+            background: linear-gradient(to bottom, rgba(179, 162, 117, 0.02), transparent);
+        }
+
+        .clip-column.active {
+            clip-path: inset(0 0 0 0);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1100px;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-family: var(--font-primary);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .hero-title span.solid-text {
+            color: var(--text-primary);
+            background: linear-gradient(90deg, var(--text-primary), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hero Text Reveal Animation */
+        .char {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(100%);
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .char.revealed {
+            opacity: 1;
+            transform: translateY(0);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-secondary);
+            font-weight: 500;
+            max-width: 700px;
+            margin: 0 auto 48px;
+            line-height: 1.6;
+        }
+
+        /* ── Scroll Animations ── */
+        .animate-on-scroll {
+            opacity: 0;
+            filter: blur(8px);
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .animate-on-scroll.in-view {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        /* ── Sections & Layout ── */
+        .ds-section {
+            padding: 120px 5vw;
+            position: relative;
+            background: var(--bg-primary);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .section-label {
+            font-family: var(--font-secondary);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 16px;
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(179, 162, 117, 0.1);
+            border-radius: 999px;
+        }
+
+        .section-title {
+            font-family: var(--font-primary);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 64px;
+            letter-spacing: -1px;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+            border-radius: 24px;
+            padding: 48px;
+        }
+
+        /* ── Interactive Components & Animations ── */
+
+        /* 1. Beam Button */
+        .btn-beam {
+            position: relative;
+            display: inline-flex;
+            border-radius: 9999px;
+            padding: 1.5px;
+            overflow: hidden;
+            text-decoration: none;
+            background: transparent;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(179, 162, 117, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .btn-beam:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(179, 162, 117, 0.4);
+        }
+
+        .btn-beam::before {
+            content: "";
+            position: absolute;
+            inset: -100%;
+            background: conic-gradient(from 0deg, transparent 0 340deg, var(--accent-gold) 360deg);
+            animation: spin-beam 3s linear infinite;
+        }
+
+        .btn-beam-inner {
+            background: var(--bg-primary);
+            border-radius: 9999px;
+            position: relative;
+            z-index: 10;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .btn-beam:hover .btn-beam-inner {
+            background: var(--bg-secondary);
+            color: var(--accent-gold);
+        }
+
+        @keyframes spin-beam {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 2. Flashlight Card (Adapted for White Theme) */
+        .flashlight-card {
+            position: relative;
+            background: var(--bg-primary);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flashlight-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .flashlight-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            /* Inner Glow */
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.8), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .flashlight-card:hover::before {
+            opacity: 1;
+        }
+
+        .flashlight-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 2px;
+            /* Outline Glow */
+            background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), var(--accent-gold), transparent 40%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+
+        .flashlight-card:hover::after {
+            opacity: 1;
+        }
+
+        /* 3. 3D Card Rotator Stack */
+        .rotator-container {
+            position: relative;
+            height: 400px;
+            perspective: 1500px;
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .rotator-card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            backface-visibility: hidden;
+            background: var(--bg-primary);
+            border-radius: 24px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* 4. Marquee Infinite Loop */
+        .marquee-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            padding: 40px 0;
+        }
+
+        .marquee-content {
+            display: flex;
+            width: max-content;
+            animation: marquee 40s linear infinite;
+            gap: 80px;
+            padding-left: 80px;
+        }
+
+        .marquee-content:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ── UI Elements Detail ── */
+
+        /* Grid Specs */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr 200px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 24px 0;
+            align-items: center;
+            gap: 24px;
+            transition: background 0.3s;
+        }
+
+        .spec-grid:hover {
+            background: rgba(0, 0, 0, 0.01);
+            padding-left: 16px;
+            padding-right: 16px;
+            border-radius: 8px;
+            border-bottom-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .spec-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                padding: 16px 0;
+            }
+        }
+
+        /* Color Swatches */
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+        }
+
+        .color-box {
+            height: 120px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            margin-bottom: 16px;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .color-box:hover {
+            transform: scale(1.05);
+        }
+
+        /* Inputs & Controls */
+        .ds-input {
+            width: 100%;
+            padding: 16px 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: var(--bg-secondary);
+            font-family: var(--font-secondary);
+            font-size: 15px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            color: var(--text-primary);
+        }
+
+        .ds-input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            background: var(--bg-primary);
+            box-shadow: 0 0 0 4px rgba(179, 162, 117, 0.15);
+        }
+
+        /* Badges */
+        .ds-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: var(--font-secondary);
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+        }
+
+        .badge-dark {
+            background: var(--bg-dark);
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(10, 26, 28, 0.2);
+        }
+
+        .badge-gold {
+            background: rgba(179, 162, 117, 0.1);
+            color: #8A7B54;
+            border: 1px solid rgba(179, 162, 117, 0.3);
+        }
+
+        .badge-success {
+            background: rgba(22, 228, 99, 0.1);
+            color: #0E923F;
+            border: 1px solid rgba(22, 228, 99, 0.3);
+        }
+
+        /* Tooltips */
+        .ds-tooltip-container {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .ds-tooltip {
+            position: absolute;
+            bottom: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%) translateY(10px) scale(0.95);
+            opacity: 0;
+            pointer-events: none;
+            background: var(--bg-dark);
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: var(--font-secondary);
+            white-space: nowrap;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .ds-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: var(--bg-dark) transparent transparent transparent;
+        }
+
+        .ds-tooltip-container:hover .ds-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0) scale(1);
+        }
+
+        /* Modal Overlay Preview */
+        .mini-modal {
+            background: var(--bg-primary);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            padding: 32px;
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── Navigation ── -->
+    <nav class="ds-nav">
+        <span class="ds-nav-brand">
+            <i data-lucide="blocks" style="color:var(--accent-gold); width:18px; height:18px;"></i>
+            DEV.CRACHÁ DS
+        </span>
+        <a href="#hero">1. Hero Overview</a>
+        <a href="#typography">2. Typography</a>
+        <a href="#colors">3. Colors System</a>
+        <a href="#components">4. UI Components</a>
+        <a href="#icons">5. Iconography</a>
+        <a href="#animations">6. Animations</a>
+    </nav>
+
+    <!-- ── 0. HERO ── -->
+    <section id="hero" class="hero-section">
+        <div class="hero-grid"></div>
+        <div class="bg-clip-columns" id="clip-grid"></div>
+
+        <div class="hero-content">
+            <div class="animate-on-scroll" style="margin-bottom: 32px;">
+                <span class="ds-badge badge-gold">
+                    <span
+                        style="display:block; width:8px; height:8px; background:var(--accent-gold); border-radius:50%; box-shadow: 0 0 10px var(--accent-gold);"></span>
+                    V2.0 Documentation
+                </span>
+            </div>
+
+            <h1 class="hero-title" id="hero-title-anim">
+                <span class="solid-text">Design System</span><br>
+                <span class="text-transparent-outline">Inteligente</span> & <span
+                    class="text-transparent-outline">Criativo</span>
+            </h1>
+
+            <p class="hero-subtitle animate-on-scroll" style="transition-delay: 0.2s;">
+                Focado na elegância do branco, letreiros transparentes e interações avançadas com física precisa para
+                maximizar a conversão.
+            </p>
+
+            <div class="animate-on-scroll"
+                style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap; transition-delay: 0.4s;">
+                <a href="#components" class="btn-beam">
+                    <div class="btn-beam-inner">
+                        <i data-lucide="zap" style="width:18px; height:18px;"></i>
+                        Explorar UI
+                    </div>
+                </a>
+                <a href="#animations"
+                    style="padding: 16px 32px; border-radius: 9999px; font-family:var(--font-primary); font-weight:700; font-size:15px; color:var(--text-primary); border: 1px solid rgba(0,0,0,0.1); background: var(--bg-glass); backdrop-filter:blur(10px); display:flex; align-items:center; gap:12px; text-decoration: none; transition: all 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
+                    <i data-lucide="play-circle" style="width:18px; height:18px;"></i>
+                    Ver Animações
+                </a>
+            </div>
+        </div>
+
+        <img src="Criando-1-1_7fce7b6c3d8f.png" alt="" class="animate-on-scroll"
+            style="position: absolute; right: 5%; bottom: 10%; width: 140px; opacity: 0.8; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15)); transition-delay: 0.6s;" />
+    </section>
+
+    <!-- ── 1. TYPOGRAPHY ── -->
+    <section id="typography" class="ds-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-label animate-on-scroll">02. Typographic Scale</div>
+            <h2 class="section-title animate-on-scroll">Fontes, Tamanhos & Transparência</h2>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-bottom: 80px;">
+                <div class="flashlight-card animate-on-scroll" onmousemove="handleFlashlight(event, this)">
+                    <h3
+                        style="font-family:var(--font-primary); font-size:56px; font-weight:900; margin:0 0 16px; letter-spacing:-2px;">
+                        Montserrat</h3>
+                    <p style="color:var(--text-secondary); font-size:15px; line-height:1.7;">
+                        <strong>Primary Font Family.</strong> Utilizada para Headings (h1 → h6), botões e chamadas
+                        premium.
+                        Carregada localmente. Pesos: 500, 600, 700, 800, 900.
+                    </p>
+                </div>
+                <div class="flashlight-card animate-on-scroll" onmousemove="handleFlashlight(event, this)"
+                    style="transition-delay: 0.2s;">
+                    <h3
+                        style="font-family:var(--font-secondary); font-size:56px; font-weight:300; margin:0 0 16px; letter-spacing:-2px;">
+                        Inter</h3>
+                    <p style="color:var(--text-secondary); font-size:15px; line-height:1.7;">
+                        <strong>Secondary Font Family.</strong> Aplicada em textos de corpo (body), labels, tooltips e
+                        captions para garantir máxima legibilidade. Pesos: 300, 400, 500, 600.
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-panel animate-on-scroll">
+                <div class="spec-grid">
+                    <span
+                        style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary); font-weight:700; text-transform:uppercase; letter-spacing:1px;">Heading
+                        1</span>
+                    <div
+                        style="font-family:var(--font-primary); font-size:48px; font-weight:900; color:var(--text-primary); line-height:1.1; letter-spacing:-1.5px;">
+                        Crie sua consultoria de forma segura</div>
+                    <div
+                        style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary); text-align:right;">
+                        Montserrat 900<br>48px · LH 1.1<br>#0A1A1C
+                    </div>
+                </div>
+
+                <div class="spec-grid">
+                    <span
+                        style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary); font-weight:700; text-transform:uppercase; letter-spacing:1px;">H1
+                        Transparente</span>
+                    <div style="font-family:var(--font-primary); font-size:48px; font-weight:900; line-height:1.1; letter-spacing:-1.5px;"
+                        class="text-transparent-outline">Design Fora da Caixa</div>
+                    <div
+                        style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary); text-align:right;">
+                        Montserrat 900<br>48px · Stroke 1.5px<br>Transparent
+                    </div>
+                </div>
+
+                <div class="spec-grid">
+                    <span
+                        style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary); font-weight:700; text-transform:uppercase; letter-spacing:1px;">Heading
+                        2 Accent</span>
+                    <div
+                        style="font-family:var(--font-primary); font-size:36px; font-weight:800; color:var(--accent-gold); line-height:1.2; letter-spacing:-1px;">
+                        Este workshop é para você</div>
+                    <div
+                        style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary); text-align:right;">
+                        Montserrat 800<br>36px · LH 1.2<br>#B3A275
+                    </div>
+                </div>
+
+                <div class="spec-grid">
+                    <span
+                        style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary); font-weight:700; text-transform:uppercase; letter-spacing:1px;">Body
+                        Large / Lead</span>
+                    <div
+                        style="font-family:var(--font-secondary); font-size:20px; font-weight:400; color:var(--text-primary); line-height:1.6;">
+                        Uma manhã de imersão prática para estruturar sua Consultoria Empresarial com clareza.</div>
+                    <div
+                        style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary); text-align:right;">
+                        Inter 400<br>20px · LH 1.6<br>#0A1A1C
+                    </div>
+                </div>
+
+                <div class="spec-grid border-none" style="border-bottom: none;">
+                    <span
+                        style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary); font-weight:700; text-transform:uppercase; letter-spacing:1px;">Caption
+                        / Utility</span>
+                    <div
+                        style="font-family:var(--font-secondary); font-size:14px; font-weight:600; color:var(--text-secondary); letter-spacing:1.5px; text-transform:uppercase;">
+                        De R$697,00 por apenas</div>
+                    <div
+                        style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary); text-align:right;">
+                        Inter 600<br>14px · Uppercase<br>Lettering 1.5px
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 2. COLORS ── -->
+    <section id="colors" class="ds-section" style="background:#F8F9FA;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-label animate-on-scroll">03. Color System</div>
+            <h2 class="section-title animate-on-scroll">Aesthetics Branco & Contraste</h2>
+
+            <div style="margin-bottom: 24px; font-family:var(--font-secondary); font-size:13px; font-weight:800; color:var(--text-primary); letter-spacing:2px; text-transform:uppercase;"
+                class="animate-on-scroll">Backgrounds & Surfaces (Neutral)</div>
+            <div class="color-palette" style="margin-bottom: 64px;">
+                <div class="color-card animate-on-scroll">
+                    <div class="color-box" style="background: #FFFFFF;"></div>
+                    <div style="font-weight:800; font-size:16px; margin-bottom:4px;">Pure White</div>
+                    <div style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary);">#FFFFFF
+                        · RGB(255,255,255)</div>
+                    <div
+                        style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary); margin-top:8px;">
+                        Base Background (AAA)</div>
+                </div>
+                <div class="color-card animate-on-scroll" style="transition-delay: 0.1s;">
+                    <div class="color-box" style="background: #F8F9FA;"></div>
+                    <div style="font-weight:800; font-size:16px; margin-bottom:4px;">Off White</div>
+                    <div style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary);">#F8F9FA
+                        · HSL(210, 16%, 98%)</div>
+                    <div
+                        style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary); margin-top:8px;">
+                        Sections / Alt Bg</div>
+                </div>
+                <div class="color-card animate-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="color-box" style="background: #0A1A1C;"></div>
+                    <div style="font-weight:800; font-size:16px; margin-bottom:4px;">Deep Teal / Dark</div>
+                    <div style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary);">#0A1A1C
+                        · RGB(10,26,28)</div>
+                    <div
+                        style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary); margin-top:8px;">
+                        Primary Text / Dark Components</div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 24px; font-family:var(--font-secondary); font-size:13px; font-weight:800; color:var(--text-primary); letter-spacing:2px; text-transform:uppercase;"
+                class="animate-on-scroll">Brand, Accents & Glows</div>
+            <div class="color-palette">
+                <div class="color-card animate-on-scroll">
+                    <div class="color-box" style="background: #B3A275;"></div>
+                    <div style="font-weight:800; font-size:16px; margin-bottom:4px;">Premium Gold</div>
+                    <div style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary);">#B3A275
+                        · Decorative / Icons</div>
+                </div>
+                <div class="color-card animate-on-scroll" style="transition-delay: 0.1s;">
+                    <div class="color-box" style="background: #16e463;"></div>
+                    <div style="font-weight:800; font-size:16px; margin-bottom:4px;">Vibrant Green</div>
+                    <div style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary);">#16E463
+                        · Success / Progress</div>
+                </div>
+                <div class="color-card animate-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="color-box" style="background: linear-gradient(90deg, #00FF5F 0%, #25D366 100%);"></div>
+                    <div style="font-weight:800; font-size:16px; margin-bottom:4px;">Gradient CTA</div>
+                    <div style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary);">
+                        var(--gradient) · Action Hooks</div>
+                </div>
+                <div class="color-card animate-on-scroll" style="transition-delay: 0.3s;">
+                    <div class="color-box"
+                        style="background: #FFFFFF; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 0 30px rgba(179, 162, 117, 0.4);">
+                    </div>
+                    <div style="font-weight:800; font-size:16px; margin-bottom:4px;">Gold Glow Effect</div>
+                    <div style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary);">Box
+                        Shadow Glow para Hover</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 3. COMPONENTS ── -->
+    <section id="components" class="ds-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-label animate-on-scroll">04. Interactive Components</div>
+            <h2 class="section-title animate-on-scroll">UI Showcase com Animações</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
+
+                <!-- Left Column -->
+                <div style="display:flex; flex-direction:column; gap:64px;">
+
+                    <!-- Buttons -->
+                    <div class="animate-on-scroll">
+                        <h3
+                            style="font-family:var(--font-primary); font-size:28px; font-weight:900; margin-bottom:32px;">
+                            Buttons</h3>
+                        <div class="flashlight-card" onmousemove="handleFlashlight(event, this)">
+                            <div style="display:flex; flex-direction:column; gap:32px;">
+
+                                <div style="display:flex; flex-direction:column; gap:12px;">
+                                    <span
+                                        style="font-size:11px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:1px; font-weight:700;">Primary
+                                        (Border Beam Anim)</span>
+                                    <div>
+                                        <a href="#" class="btn-beam">
+                                            <div class="btn-beam-inner">
+                                                Quero criar mnha consultoria
+                                                <i data-lucide="arrow-right" style="width:18px; height:18px;"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div style="display:flex; flex-direction:column; gap:12px;">
+                                    <span
+                                        style="font-size:11px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:1px; font-weight:700;">Secondary
+                                        Outline Transparente</span>
+                                    <div>
+                                        <button
+                                            style="padding:16px 32px; border-radius:999px; background:transparent; font-family:var(--font-primary); font-weight:800; font-size:15px; border: 2px solid var(--text-primary); color:var(--text-primary); cursor:pointer; transition: all 0.3s;"
+                                            onmouseover="this.style.background='var(--text-primary)'; this.style.color='#fff'; this.style.transform='translateY(-2px)'"
+                                            onmouseout="this.style.background='transparent'; this.style.color='var(--text-primary)'; this.style.transform='none'">
+                                            Explorar Opções
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div style="display:flex; flex-direction:column; gap:12px;">
+                                    <span
+                                        style="font-size:11px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:1px; font-weight:700;">CTA
+                                        Glowing Green</span>
+                                    <div>
+                                        <button
+                                            style="padding:16px 32px; border-radius:999px; background:linear-gradient(90deg, #00FF5F, #25D366); color:#000; font-family:var(--font-primary); font-weight:900; font-size:15px; border:none; cursor:pointer; box-shadow: 0 10px 30px rgba(22, 228, 99, 0.4); transition: transform 0.3s;"
+                                            onmouseover="this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.transform='none'">
+                                            Garantir Vaga
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inputs & Badges -->
+                    <div class="animate-on-scroll">
+                        <h3
+                            style="font-family:var(--font-primary); font-size:28px; font-weight:900; margin-bottom:32px;">
+                            Inputs & Badges</h3>
+                        <div class="flashlight-card" onmousemove="handleFlashlight(event, this)">
+                            <div style="display:flex; flex-direction:column; gap:32px;">
+                                <div>
+                                    <label
+                                        style="display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:700; margin-bottom:12px; color:var(--text-primary);">
+                                        Email Address <span style="color:var(--accent-gold);">*</span>
+                                    </label>
+                                    <input type="email" class="ds-input" placeholder="contato@devolvimeucracha.com.br">
+                                </div>
+
+                                <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top: 10px;">
+                                    <span class="ds-badge badge-dark">
+                                        <i data-lucide="check-circle"
+                                            style="width:14px; height:14px; color:var(--accent-green);"></i>
+                                        Documentado
+                                    </span>
+                                    <span class="ds-badge badge-gold">
+                                        Premium
+                                    </span>
+                                    <span class="ds-badge badge-success">
+                                        Progress 100%
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column -->
+                <div style="display:flex; flex-direction:column; gap:64px;">
+
+                    <!-- 3D Card Rotator -->
+                    <div class="animate-on-scroll">
+                        <h3
+                            style="font-family:var(--font-primary); font-size:28px; font-weight:900; margin-bottom:32px;">
+                            Layered Cards (Stack Setup)</h3>
+                        <div class="rotator-container" id="card-rotator">
+                            <!-- Rotator Cards injected via JS -->
+                        </div>
+                        <div style="text-align:center; margin-top:24px;">
+                            <p style="font-family:var(--font-secondary); font-size:12px; color:var(--text-secondary);">
+                                Animação em loop com pure CSS transforms + JS state.</p>
+                        </div>
+                    </div>
+
+                    <!-- Modal & Tooltips -->
+                    <div class="animate-on-scroll">
+                        <h3
+                            style="font-family:var(--font-primary); font-size:28px; font-weight:900; margin-bottom:32px;">
+                            Modals & Tooltips</h3>
+
+                        <div class="mini-modal">
+                            <div
+                                style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 24px;">
+                                <h4
+                                    style="font-family:var(--font-primary); font-weight:800; font-size:20px; color:var(--text-primary);">
+                                    Inscrição</h4>
+                                <i data-lucide="x" style="color:var(--text-secondary); cursor:pointer;"></i>
+                            </div>
+                            <p
+                                style="font-family:var(--font-secondary); font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom: 24px;">
+                                Preencha os dados abaixo para confirmar sua presença no workshop.
+                            </p>
+
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <div class="ds-tooltip-container">
+                                    <div
+                                        style="display:flex; align-items:center; gap:6px; color:var(--text-secondary); font-weight:600; font-size:13px;">
+                                        <i data-lucide="info" style="width:16px; height:16px;"></i> Info
+                                    </div>
+                                    <div class="ds-tooltip">Vagas limitadissimas!</div>
+                                </div>
+                                <button class="btn-beam" style="padding:1.5px; border-radius:999px;">
+                                    <div class="btn-beam-inner" style="padding:10px 24px; font-size:13px;">Enviar</div>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 4. ICONS ── -->
+    <section id="icons" class="ds-section" style="background:#F8F9FA;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align:center;">
+            <div class="section-label animate-on-scroll">05. Iconography</div>
+            <h2 class="section-title animate-on-scroll">Marquee Infinite Loop</h2>
+
+            <p class="animate-on-scroll"
+                style="font-size:15px; color:var(--text-secondary); max-width:600px; margin: 0 auto 40px;">
+                Utilizando uma máscara alpha no CSS para criar bordas suaves no container que roda o infinite loop.
+            </p>
+
+            <div class="marquee-wrapper animate-on-scroll">
+                <div class="marquee-content" style="color:var(--text-primary); opacity: 0.7;">
+                    <div style="display:flex; gap:80px; align-items:center;">
+                        <i data-lucide="calendar" style="width:48px; height:48px;"></i>
+                        <i data-lucide="clock" style="width:48px; height:48px;"></i>
+                        <i data-lucide="globe" style="width:48px; height:48px;"></i>
+                        <iconify-icon icon="solar:stars-minimalistic-bold-duotone"
+                            style="font-size:56px; color:var(--accent-gold);"></iconify-icon>
+                        <i data-lucide="check-circle" style="width:48px; height:48px; color:var(--accent-green);"></i>
+                        <i data-lucide="zap" style="width:48px; height:48px;"></i>
+                        <i data-lucide="shield" style="width:48px; height:48px;"></i>
+                        <iconify-icon icon="solar:database-bold-duotone"
+                            style="font-size:56px; color:var(--accent-gold);"></iconify-icon>
+                    </div>
+                    <div style="display:flex; gap:80px; align-items:center;">
+                        <i data-lucide="calendar" style="width:48px; height:48px;"></i>
+                        <i data-lucide="clock" style="width:48px; height:48px;"></i>
+                        <i data-lucide="globe" style="width:48px; height:48px;"></i>
+                        <iconify-icon icon="solar:stars-minimalistic-bold-duotone"
+                            style="font-size:56px; color:var(--accent-gold);"></iconify-icon>
+                        <i data-lucide="check-circle" style="width:48px; height:48px; color:var(--accent-green);"></i>
+                        <i data-lucide="zap" style="width:48px; height:48px;"></i>
+                        <i data-lucide="shield" style="width:48px; height:48px;"></i>
+                        <iconify-icon icon="solar:database-bold-duotone"
+                            style="font-size:56px; color:var(--accent-gold);"></iconify-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 5. ANIMATIONS ── -->
+    <section id="animations" class="ds-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-label animate-on-scroll">06. Motion System</div>
+            <h2 class="section-title animate-on-scroll">A Lógica por trás do "Wow"</h2>
+
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:32px;">
+                <div class="flashlight-card animate-on-scroll" onmousemove="handleFlashlight(event, this)">
+                    <div
+                        style="width:48px; height:48px; border-radius:12px; background:rgba(179,162,117,0.1); display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
+                        <i data-lucide="arrow-up" style="color:var(--accent-gold);"></i>
+                    </div>
+                    <h4 style="font-family:var(--font-primary); font-size:22px; font-weight:800; margin-bottom:12px;">
+                        Scroll Reveal</h4>
+                    <p style="font-size:14px; color:var(--text-secondary); line-height:1.6;">Utilizamos o
+                        IntersectionObserver nativo. Os elementos perdem o blur e deslizam para cima de forma elegante
+                        quando surgem na tela.</p>
+                </div>
+
+                <div class="flashlight-card animate-on-scroll" onmousemove="handleFlashlight(event, this)"
+                    style="transition-delay: 0.1s;">
+                    <div
+                        style="width:48px; height:48px; border-radius:12px; background:rgba(179,162,117,0.1); display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
+                        <i data-lucide="mouse-pointer-2" style="color:var(--accent-gold);"></i>
+                    </div>
+                    <h4 style="font-family:var(--font-primary); font-size:22px; font-weight:800; margin-bottom:12px;">
+                        Flashlight Glow</h4>
+                    <p style="font-size:14px; color:var(--text-secondary); line-height:1.6;">Os cards acompanham o mouse
+                        passando propriedades X/Y para o CSS, gerando um brilho radial sutil por trás do contêiner
+                        branco.</p>
+                </div>
+
+                <div class="flashlight-card animate-on-scroll" onmousemove="handleFlashlight(event, this)"
+                    style="transition-delay: 0.2s;">
+                    <div
+                        style="width:48px; height:48px; border-radius:12px; background:rgba(179,162,117,0.1); display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
+                        <i data-lucide="loader" style="color:var(--accent-gold);"></i>
+                    </div>
+                    <h4 style="font-family:var(--font-primary); font-size:22px; font-weight:800; margin-bottom:12px;">
+                        Border Beam</h4>
+                    <p style="font-size:14px; color:var(--text-secondary); line-height:1.6;">Botões primários possuem um
+                        conic gradient girando atrás de um padding de 1.5px. Cria um highlight infinito premium.</p>
+                </div>
+
+                <div class="flashlight-card animate-on-scroll" onmousemove="handleFlashlight(event, this)"
+                    style="transition-delay: 0.3s;">
+                    <div
+                        style="width:48px; height:48px; border-radius:12px; background:rgba(179,162,117,0.1); display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
+                        <i data-lucide="layers" style="color:var(--accent-gold);"></i>
+                    </div>
+                    <h4 style="font-family:var(--font-primary); font-size:22px; font-weight:800; margin-bottom:12px;">3D
+                        Card Stack</h4>
+                    <p style="font-size:14px; color:var(--text-secondary); line-height:1.6;">Uso de CSS transitions
+                        (translateY e scale) orquestradas pelo Javascript para gerar um loop visual super atrativo de
+                        profundidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer style="background:var(--bg-dark); padding: 60px 5vw; text-align:center;">
+        <h2 style="font-family:var(--font-primary); font-weight:900; color:#fff; font-size:32px; margin-bottom:16px;">
+            <span class="text-transparent-outline-white">Pronto para </span> Escalar?
+        </h2>
+        <p style="color:rgba(255,255,255,0.6); margin-bottom:40px; font-size:15px;">Sistema de Design integrado •
+            Animações Avançadas</p>
+        <button
+            style="padding:16px 32px; border-radius:999px; background:linear-gradient(90deg, #00FF5F, #25D366); color:#000; font-family:var(--font-primary); font-weight:900; font-size:15px; border:none; cursor:pointer; box-shadow: 0 10px 30px rgba(22, 228, 99, 0.2); transition: transform 0.3s;"
+            onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='none'">
+            Conhecer Método Completo
+        </button>
+    </footer>
+
+    <!-- ── SCRIPT LOGIC ── -->
+    <script>
+        // Start Lucide Icons
+        lucide.createIcons();
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Hero Title Char Animation (Letras Transparentes/Sólidas)
+            const title = document.getElementById('hero-title-anim');
+            if (title) {
+                // Wrap text content in span.char for the spans inside
+                const wrapText = (el) => {
+                    const text = el.innerText;
+                    el.innerHTML = '';
+                    for (let char of text) {
+                        if (char === '\n') continue;
+                        const span = document.createElement('span');
+                        span.textContent = char;
+                        span.className = 'char';
+                        if (char === ' ') { span.innerHTML = '&nbsp;'; }
+                        el.appendChild(span);
+                    }
+                };
+
+                const elementsToWrap = title.querySelectorAll('span');
+                elementsToWrap.forEach(el => wrapText(el));
+
+                setTimeout(() => {
+                    document.querySelectorAll('.char').forEach((c, idx) => {
+                        c.style.transitionDelay = `${idx * 20}ms`;
+                        c.classList.add('revealed');
+                    });
+                }, 100);
+            }
+
+            // Generate Grid Columns in Hero
+            const gridContainer = document.getElementById('clip-grid');
+            if (gridContainer) {
+                for (let i = 0; i < 8; i++) {
+                    const col = document.createElement('div');
+                    col.className = 'clip-column';
+                    gridContainer.appendChild(col);
+                    setTimeout(() => {
+                        col.classList.add('active');
+                    }, 100 + (i * 150));
+                }
+            }
+
+            // Start 3D Rotator
+            setupRotator();
+        });
+
+        // Intersection Observer para Animar On Scroll
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    scrollObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            scrollObserver.observe(el);
+        });
+
+        // Efeito Flashlight / Mouse Tracking
+        function handleFlashlight(e, card) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        }
+
+        // Sistema 3D Stack do Rotator
+        function setupRotator() {
+            const container = document.getElementById('card-rotator');
+            if (!container) return;
+
+            const numCards = 3;
+            const cards = [];
+
+            const contents = [
+                { title: 'UX Premium', desc: 'Interfaces que geram percepção de alto valor para suas consultorias.', icon: 'star' },
+                { title: 'Velocidade', desc: 'Componentes validados para agilizar o processo e focar no conteúdo.', icon: 'zap' },
+                { title: 'Conversão', desc: 'Gatilhos visuais e micro-interações pensados para guiar o usuário.', icon: 'check-circle' }
+            ];
+
+            for (let i = 0; i < numCards; i++) {
+                const card = document.createElement('div');
+                card.className = 'rotator-card';
+                card.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <div style="background:rgba(179,162,117,0.1); width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center;">
+                            <i data-lucide="${contents[i].icon}" style="color:var(--accent-gold); width:24px; height:24px;"></i>
+                        </div>
+                        <span style="font-family:var(--font-secondary); font-size:13px; font-weight:800; color:var(--text-secondary); letter-spacing:1px;">0${i + 1}</span>
+                    </div>
+                    <div>
+                        <h4 style="font-family:var(--font-primary); font-weight:800; font-size:24px; color:var(--text-primary); margin-bottom:12px; letter-spacing:-0.5px;">${contents[i].title}</h4>
+                        <p style="font-family:var(--font-secondary); font-size:15px; color:var(--text-secondary); line-height:1.6;">${contents[i].desc}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+                cards.push(card);
+            }
+            lucide.createIcons();
+
+            let currentCard = 0;
+            function updateCards() {
+                cards.forEach((card, index) => {
+                    let relativeIndex = (index - currentCard + numCards) % numCards;
+
+                    if (relativeIndex === 0) {
+                        card.style.transform = 'translateY(0) scale(1) translateZ(0)';
+                        card.style.zIndex = 30;
+                        card.style.opacity = 1;
+                        card.style.filter = 'blur(0)';
+                    } else if (relativeIndex === 1) {
+                        card.style.transform = 'translateY(-40px) scale(0.92) translateZ(0)';
+                        card.style.zIndex = 20;
+                        card.style.opacity = 0.7;
+                        card.style.filter = 'blur(2px)';
+                    } else if (relativeIndex === 2) {
+                        card.style.transform = 'translateY(-80px) scale(0.85) translateZ(0)';
+                        card.style.zIndex = 10;
+                        card.style.opacity = 0.4;
+                        card.style.filter = 'blur(4px)';
+                    }
+                });
+            }
+            updateCards();
+            setInterval(() => {
+                currentCard = (currentCard + 1) % numCards;
+                updateCards();
+            }, 3500);
+        }
+    </script>
+</body>
+
+</html>

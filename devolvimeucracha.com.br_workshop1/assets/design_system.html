@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System V2.0 - Devolvi Meu Crachá</title>
+    <!-- Font Awesome and custom CSS -->
+    <link rel="stylesheet" href="../elementor-icons.css">
+    <link rel="stylesheet" href="../fontawesome.css">
+    <link rel="stylesheet" href="../theme.css">
+    <link rel="stylesheet" href="../frontend.css">
+    <link rel="stylesheet" href="../responsive.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700;800&family=Merriweather:ital,wght@0,400;1,400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --c-bg: #102A2C;
+            --c-dark: #0a1a1c;
+            --c-accent: #B3A275;
+            --c-accent-hover: #D4C59A;
+            --c-secondary: #00FF5F;
+            --c-text-primary: #F3F0E9;
+            --c-text-muted: rgba(243, 240, 233, 0.7);
+
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-blur: blur(16px);
+
+            --font-display: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-serif: 'Merriweather', serif;
+
+            --container-w: 1200px;
+            --section-y: 120px;
+        }
+
+        body {
+            background-color: var(--c-bg);
+            color: var(--c-text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            margin: 0;
+            overflow-x: hidden;
+            cursor: none;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(179, 162, 117, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 255, 95, 0.03), transparent 25%);
+            background-attachment: fixed;
+        }
+
+        /* --- Custom Cursor --- */
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--c-accent);
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(179, 162, 117, 0.5);
+            transition: width 0.2s, height 0.2s, background 0.2s;
+        }
+
+        body:hover .cursor-outline.hover {
+            width: 60px;
+            height: 60px;
+            background: rgba(179, 162, 117, 0.1);
+            border-color: var(--c-accent);
+            mix-blend-mode: difference;
+        }
+
+        /* --- Typography Classes --- */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-display);
+            line-height: 1.2;
+            margin-top: 0;
+        }
+
+        .h1 {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .h3 {
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        .h4 {
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        .h5 {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .h6 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--c-accent);
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, var(--c-accent) 0%, #F5F1E5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .body-lg {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            font-weight: 400;
+            color: var(--c-text-muted);
+        }
+
+        .body-sm,
+        .caption {
+            font-size: 0.875rem;
+            color: var(--c-text-muted);
+        }
+
+        /* --- Layout --- */
+        .container {
+            max-width: var(--container-w);
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section {
+            padding: var(--section-y) 0;
+            position: relative;
+        }
+
+        .grid-12 {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 32px;
+        }
+
+        .grid-6 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        /* --- Liquid Blobs --- */
+        .liquid-blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.4;
+            animation: floatBlob 20s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: rgba(179, 162, 117, 0.15);
+            top: -10%;
+            left: -10%;
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        }
+
+        .blob-2 {
+            width: 600px;
+            height: 600px;
+            background: rgba(0, 255, 95, 0.05);
+            top: 50%;
+            right: -20%;
+            border-radius: 60% 40% 30% 70% / 50% 40% 60% 50%;
+            animation-delay: -5s;
+        }
+
+        @keyframes floatBlob {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+
+            100% {
+                transform: translate(50px, 80px) rotate(360deg) scale(1.1);
+            }
+        }
+
+        /* --- Nav & Layout --- */
+        .ds-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .ds-sidebar {
+            width: 280px;
+            background: var(--c-dark);
+            border-right: 1px solid var(--glass-border);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 40px 24px;
+            z-index: 100;
+        }
+
+        .ds-main {
+            margin-left: 280px;
+            flex: 1;
+            padding: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .sidebar-brand {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--c-accent);
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .ds-nav-link {
+            display: block;
+            padding: 12px 16px;
+            color: var(--c-text-muted);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-family: var(--font-body);
+        }
+
+        .ds-nav-link:hover,
+        .ds-nav-link.active {
+            background: rgba(179, 162, 117, 0.1);
+            color: var(--c-accent);
+            padding-left: 24px;
+        }
+
+        /* --- Glass Panel (Cards) --- */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-panel:hover {
+            transform: translateY(-8px);
+            border-color: rgba(179, 162, 117, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-panel.green-glow:hover {
+            border-color: rgba(0, 255, 95, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 255, 95, 0.1);
+        }
+
+        /* --- Buttons & Badges --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 36px;
+            border-radius: 100px;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--c-accent);
+            color: #000;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--c-accent-hover);
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(179, 162, 117, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--c-text-primary);
+            backdrop-filter: var(--glass-blur);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--c-accent);
+            background: rgba(179, 162, 117, 0.05);
+        }
+
+        .btn-glow {
+            background: linear-gradient(90deg, #00FF5F 0%, #25D366 100%);
+            color: #000;
+            border: none;
+            box-shadow: 0 0 15px rgba(0, 255, 95, 0.4);
+            animation: pulse-glow 2.5s infinite;
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 255, 95, 0.8);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-family: var(--font-display);
+        }
+
+        .badge-accent {
+            background: rgba(179, 162, 117, 0.1);
+            color: var(--c-accent);
+            border: 1px solid rgba(179, 162, 117, 0.3);
+        }
+
+        .badge-green {
+            background: rgba(0, 255, 95, 0.1);
+            color: #00FF5F;
+            border: 1px solid rgba(0, 255, 95, 0.3);
+        }
+
+        /* --- Inputs --- */
+        .form-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            padding: 16px 24px;
+            border-radius: 16px;
+            color: #fff;
+            font-family: var(--font-body);
+            transition: all 0.3s;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            border-color: var(--c-accent);
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 0 4px rgba(179, 162, 117, 0.1);
+        }
+
+        /* --- Animations --- */
+        .fadeSlideIn {
+            animation: fadeSlideIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 255, 95, 0.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(0, 255, 95, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 255, 95, 0);
+            }
+        }
+
+        /* --- Hero Section Specific --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--glass-border);
+            background: radial-gradient(circle at center, rgba(16, 42, 44, 0.1) 0%, var(--c-dark) 100%);
+        }
+
+        .hero-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.1;
+            mix-blend-mode: color-dodge;
+            pointer-events: none;
+        }
+
+        /* Particle Glow */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--c-accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--c-accent);
+        }
+
+        /* Helpers */
+        .demo-box {
+            padding: 48px;
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        hr.divider {
+            border: 0;
+            height: 1px;
+            background: var(--glass-border);
+            margin: 60px 0;
+        }
+
+        .code-pill {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: var(--c-accent);
+            font-size: 0.85em;
+        }
+
+        /* Typography Specs */
+        .type-row {
+            display: grid;
+            grid-template-columns: 100px 1fr 300px;
+            gap: 24px;
+            padding: 32px 0;
+            border-bottom: 1px solid var(--glass-border);
+            align-items: center;
+        }
+
+        .type-spec {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--c-text-muted);
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .type-spec strong {
+            color: var(--c-accent);
+            font-weight: 500;
+        }
+
+        /* Color Swatches */
+        .swatch-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .swatch {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+        }
+
+        .swatch-color {
+            height: 140px;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            font-weight: 700;
+            font-family: var(--font-display);
+            font-size: 1rem;
+        }
+
+        .swatch-info {
+            padding: 20px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .swatch-info p {
+            margin: 0 0 8px 0;
+            font-size: 0.85rem;
+            color: var(--c-text-muted);
+        }
+
+        .swatch-info strong {
+            display: block;
+            color: var(--c-text-primary);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        /* Components Spec */
+        .spec-label {
+            display: block;
+            font-family: var(--font-display);
+            color: var(--c-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <div class="ds-layout">
+        <aside class="ds-sidebar">
+            <div class="sidebar-brand">Devolvi Meu Crachá<br><span
+                    style="color:#fff; font-size: 1rem; opacity: 0.5;">System v2.0</span></div>
+            <nav id="dsNav">
+                <a href="#hero" class="ds-nav-link active cursor-hover">01. Hero Demonstração</a>
+                <a href="#typography" class="ds-nav-link cursor-hover">02. Tipografia</a>
+                <a href="#colors" class="ds-nav-link cursor-hover">03. Sistema de Cores</a>
+                <a href="#components" class="ds-nav-link cursor-hover">04. UI Components</a>
+                <a href="#icons" class="ds-nav-link cursor-hover">05. Ícones</a>
+                <a href="#motion" class="ds-nav-link cursor-hover">06. Animações / Motion</a>
+            </nav>
+        </aside>
+
+        <main class="ds-main" onscroll="updateActiveNav()">
+
+            <div class="liquid-blob blob-1"></div>
+            <div class="liquid-blob blob-2"></div>
+
+            <!-- 01. Primeira Dobra / Hero -->
+            <section id="hero" class="hero">
+                <img src="yisutfgc1immknghe0q6-scaled_44527711c718.webp" alt="Background Texture" class="hero-img">
+
+                <div class="container container-hero fadeSlideIn">
+                    <div class="badge badge-accent fadeSlideIn delay-1"
+                        style="margin-bottom: 32px; font-size: 0.8rem; padding: 8px 20px;">
+                        <i class="fas fa-gem" style="margin-right:8px;"></i> Design System Unificado
+                    </div>
+                    <h1 class="h1 fadeSlideIn delay-2"
+                        style="margin-bottom: 32px; max-width: 900px; margin-left: auto; margin-right: auto;">
+                        Construa Projetos Com <br> <span class="text-gradient">Precisão e Elegância</span>
+                    </h1>
+                    <p class="body-lg fadeSlideIn delay-3" style="max-width: 650px; margin: 0 auto 48px auto;">
+                        Uma biblioteca espetacular contendo nossos padrões premium. Baseada em profundidade em
+                        glassmorphism, hierarquia escultural e animações imersivas.
+                    </p>
+                    <div class="fadeSlideIn delay-3" style="display: flex; gap: 24px; justify-content: center;">
+                        <a href="#components" class="btn btn-primary cursor-hover">Ver Componentes</a>
+                        <a href="#motion" class="btn btn-glow cursor-hover"><i class="fas fa-play"
+                                style="margin-right: 12px; font-size: 0.8em;"></i> Ver Interações</a>
+                    </div>
+                </div>
+            </section>
+
+            <div class="container" style="padding-top: 60px;">
+
+                <!-- 02. Tipografia -->
+                <section id="typography" class="section">
+                    <h6 class="h6">02. Foundation</h6>
+                    <h2 class="h2" style="margin-bottom: 24px;">Tipografia Estratégica</h2>
+                    <p class="body-lg" style="margin-bottom: 60px; max-width: 700px;">
+                        Composição híbrida. <strong>Montserrat</strong> conduz a atenção nas chamadas com forte peso
+                        geométrico. <strong>Inter</strong> sustenta blocos de texto entregando máxima legibilidade.
+                        <br><br>
+                        <span class="code-pill">Font Loading Strategy</span> Recomendado carregamento via CDN (Google
+                        Fonts) ou arquivos woff2 locais com <code>display: swap</code> para máxima velocidade.
+                    </p>
+
+                    <div class="glass-panel" style="padding: 0 40px;">
+                        <div class="type-row">
+                            <div class="spec-label">Heading 1</div>
+                            <h1 class="h1 type-example" style="margin:0;">Escalável & Forte</h1>
+                            <div class="type-spec">
+                                <strong>Montserrat</strong><br>
+                                Weight: 800<br>Size: clamp(3rem, 5vw, 4.5rem)<br>Line Height: 1.2<br>Letter Spacing:
+                                -0.02em<br>Transform: None
+                            </div>
+                        </div>
+                        <div class="type-row">
+                            <div class="spec-label">Heading 2</div>
+                            <h2 class="h2 type-example" style="margin:0;">Subtítulos Marcantes</h2>
+                            <div class="type-spec">
+                                <strong>Montserrat</strong><br>
+                                Weight: 700<br>Size: clamp(2.5rem, 4vw, 3.5rem)<br>Line Height: 1.2<br>Letter Spacing:
+                                -0.01em<br>Transform: None
+                            </div>
+                        </div>
+                        <div class="type-row">
+                            <div class="spec-label">Heading 3</div>
+                            <h3 class="h3 type-example" style="margin:0;">Títulos de Sessão</h3>
+                            <div class="type-spec">
+                                <strong>Montserrat</strong><br>
+                                Weight: 600<br>Size: 2.5rem<br>Line Height: 1.2<br>Letter Spacing: 0<br>Transform: None
+                            </div>
+                        </div>
+                        <div class="type-row">
+                            <div class="spec-label">Heading 4</div>
+                            <h4 class="h4 type-example" style="margin:0;">Títulos de Cards</h4>
+                            <div class="type-spec">
+                                <strong>Montserrat</strong><br>
+                                Weight: 500<br>Size: 2rem<br>Line Height: 1.3<br>Letter Spacing: 0<br>Transform: None
+                            </div>
+                        </div>
+                        <div class="type-row">
+                            <div class="spec-label">Heading 6 (Eyebrow)</div>
+                            <h6 class="h6 type-example" style="margin:0;">TAG IDENTIFICADORA</h6>
+                            <div class="type-spec">
+                                <strong>Montserrat</strong><br>
+                                Weight: 500<br>Size: 1.25rem<br>Line Height: 1.4<br>Letter Spacing: 0.1em<br>Transform:
+                                Uppercase
+                            </div>
+                        </div>
+                        <div class="type-row">
+                            <div class="spec-label">Body Large</div>
+                            <p class="body-lg" style="margin:0;">Bloco de texto longo para descrições de hero. Permite
+                                uma leitura espaçada e confortável.</p>
+                            <div class="type-spec">
+                                <strong>Inter</strong><br>
+                                Weight: 400<br>Size: 1.125rem<br>Line Height: 1.7<br>Opacity: 0.7
+                            </div>
+                        </div>
+                        <div class="type-row" style="border-bottom: none;">
+                            <div class="spec-label">Body / Caption</div>
+                            <p class="body-sm" style="margin:0;">Textos auxiliares, meta dados de cards e legendas.</p>
+                            <div class="type-spec">
+                                <strong>Inter</strong><br>
+                                Weight: 400<br>Size: 0.875rem<br>Line Height: 1.6<br>Opacity: 0.6
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="divider">
+
+                <!-- 03. Cores -->
+                <section id="colors" class="section">
+                    <h6 class="h6">03. Palette</h6>
+                    <h2 class="h2" style="margin-bottom: 24px;">Sistema de Cores</h2>
+                    <p class="body-lg" style="margin-bottom: 60px; max-width: 700px;">
+                        Trabalhamos com tons profundos de aqua e darkness para o background, permitindo que o foco caia
+                        inteiramente no Dourado (Ação Primária) e no Verde Neon (Conversão/Sucesso). Contrastes
+                        validados AAA para textos claros sobre fundo escuro.
+                    </p>
+
+                    <h4 class="h4" style="margin-bottom: 24px;">Ação & Marca (Accent Roles)</h4>
+                    <div class="swatch-group" style="margin-bottom: 60px;">
+                        <div class="swatch cursor-hover">
+                            <div class="swatch-color" style="background: var(--c-accent); color: #000;">Gold Primary
+                            </div>
+                            <div class="swatch-info">
+                                <strong>#B3A275</strong>
+                                <p>Role: Semântica Primária.</p>
+                                <p>Rules: Botões Padrões, Links Actives, Bordas em Foco, Textos Gradientes.</p>
+                            </div>
+                        </div>
+                        <div class="swatch cursor-hover">
+                            <div class="swatch-color" style="background: var(--c-secondary); color: #000;">Pulse Green
+                            </div>
+                            <div class="swatch-info">
+                                <strong>#00FF5F</strong>
+                                <p>Role: Semântica Secundária/Sucesso.</p>
+                                <p>Rules: Botões com Glow (Pulsantes), Badges de Status, Highlights urgentes.</p>
+                            </div>
+                        </div>
+                        <div class="swatch cursor-hover">
+                            <div class="swatch-color"
+                                style="background: linear-gradient(90deg, #00FF5F 0%, #25D366 100%); color: #000;">Buy
+                                Gradient</div>
+                            <div class="swatch-info">
+                                <strong>Gradient Map</strong>
+                                <p>Role: CTA de Máxima Conversão.</p>
+                                <p>Rules: Usado apenas no botão principal de venda/inscrição (btn-glow).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="h4" style="margin-bottom: 24px;">Fundos & Superfícies (Base Roles)</h4>
+                    <div class="swatch-group">
+                        <div class="swatch cursor-hover">
+                            <div class="swatch-color"
+                                style="background: var(--c-bg); border: 1px solid var(--glass-border);">Deep Aqua Base
+                            </div>
+                            <div class="swatch-info">
+                                <strong>#102A2C</strong>
+                                <p>Role: Base de Fundo / Neutral</p>
+                                <p>Rules: Fundo padrão de 80% das seções. Gera clima premium corporativo.</p>
+                            </div>
+                        </div>
+                        <div class="swatch cursor-hover">
+                            <div class="swatch-color"
+                                style="background: var(--c-dark); border: 1px solid var(--glass-border);">Abyss Dark
+                            </div>
+                            <div class="swatch-info">
+                                <strong>#0A1A1C</strong>
+                                <p>Role: Contraste Profundo</p>
+                                <p>Rules: Fundo de Headers, Footers, e Popups Modais.</p>
+                            </div>
+                        </div>
+                        <div class="swatch cursor-hover">
+                            <div class="swatch-color"
+                                style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border);">
+                                Glass Panel</div>
+                            <div class="swatch-info">
+                                <strong>rgba(255,255,255,0.03)</strong>
+                                <p>Role: Superfície Elevada (Cards)</p>
+                                <p>Rules: Qualquer card, navbar flutuante ou formulário sobreposto.</p>
+                            </div>
+                        </div>
+                        <div class="swatch cursor-hover">
+                            <div class="swatch-color" style="background: var(--c-text-primary); color: #000;">Warm White
+                                Text</div>
+                            <div class="swatch-info">
+                                <strong>#F3F0E9</strong>
+                                <p>Role: High Contrast Text</p>
+                                <p>Rules: Títulos e Ícones sólidos. A versão rgba(...,0.7) é p/ parágrafos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="divider">
+
+                <!-- 04. UI Components -->
+                <section id="components" class="section">
+                    <h6 class="h6">04. Building Blocks</h6>
+                    <h2 class="h2" style="margin-bottom: 60px;">UI Components</h2>
+
+                    <div class="grid-12" style="gap: 48px;">
+
+                        <!-- Col 1 -->
+                        <div style="grid-column: span 6;">
+                            <span class="spec-label">Botações & Ações (Hover Ativo)</span>
+                            <div class="demo-box"
+                                style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+                                <button class="btn btn-primary cursor-hover">
+                                    Ação Primária <i class="fas fa-arrow-right" style="margin-left: 12px;"></i>
+                                </button>
+                                <button class="btn btn-secondary cursor-hover">
+                                    Secundário Outline
+                                </button>
+                                <button class="btn btn-glow cursor-hover">
+                                    Ação Pulsante Green
+                                </button>
+                                <div style="display: flex; gap: 16px; margin-top: 16px;">
+                                    <span class="badge badge-accent">Novo Módulo</span>
+                                    <span class="badge badge-green">Inscrições Abertas</span>
+                                </div>
+                            </div>
+
+                            <span class="spec-label" style="margin-top: 48px;">Campos de Entrada (Formulários)</span>
+                            <div class="demo-box">
+                                <label class="body-sm" style="display:block; margin-bottom: 8px;">Nome Completo</label>
+                                <input type="text" class="form-input cursor-hover" placeholder="O seu nome aqui..."
+                                    style="margin-bottom: 24px;">
+                                <label class="body-sm" style="display:block; margin-bottom: 8px;">E-mail
+                                    Profissional</label>
+                                <input type="email" class="form-input cursor-hover" placeholder="seu@email.com">
+                            </div>
+                        </div>
+
+                        <!-- Col 2 -->
+                        <div style="grid-column: span 6;">
+                            <span class="spec-label">Cards & Painéis de Vidro (Passe o mouse)</span>
+                            <div class="glass-panel cursor-hover" style="margin-bottom: 32px;">
+                                <i class="fas fa-gem"
+                                    style="font-size: 2rem; margin-bottom: 24px; color: var(--c-accent);"></i>
+                                <h4 class="h4" style="margin-bottom: 16px;">Componente de Valor</h4>
+                                <p class="body-sm" style="margin-bottom: 24px;">Os cards no sistema possuem bordas de
+                                    vidro reflexivo que clareiam no hover. Acompanhados de um drop-shadow profundo
+                                    simulando elevação.</p>
+                                <a href="#"
+                                    style="color: var(--c-accent); text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">Saber
+                                    mais <i class="fas fa-chevron-right"
+                                        style="font-size: 0.8em; margin-left: 4px;"></i></a>
+                            </div>
+
+                            <div class="glass-panel cursor-hover green-glow border-glow">
+                                <span class="badge badge-green"
+                                    style="position: absolute; top: 24px; right: 24px;">DESTAQUE</span>
+                                <h4 class="h4" style="margin-bottom: 16px;">Pricing / Callout</h4>
+                                <p class="body-sm" style="margin-bottom: 24px;">Card adaptado para destacar preços,
+                                    serviços ou features cruciais, utilizando acentos na cor Pulse Green.</p>
+                                <button class="btn btn-glow cursor-hover" style="width: 100%; padding: 14px;">Quero
+                                    Assinar</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <span class="spec-label" style="margin-top: 60px;">Navbar (Sticky Header Exemplo)</span>
+                    <div class="glass-panel"
+                        style="padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="font-family: var(--font-display); font-weight: 700; color: #fff;">LOGO AQUI</div>
+                        <div style="display: flex; gap: 32px; font-size: 0.9rem; font-weight: 500;">
+                            <a href="#" style="color: var(--c-text-primary); text-decoration: none;"
+                                class="cursor-hover">Membros</a>
+                            <a href="#" style="color: var(--c-text-primary); text-decoration: none;"
+                                class="cursor-hover">Workshops</a>
+                            <a href="#" style="color: var(--c-accent); text-decoration: none;"
+                                class="cursor-hover">Login</a>
+                        </div>
+                    </div>
+
+                </section>
+
+                <hr class="divider">
+
+                <!-- 05. Icons -->
+                <section id="icons" class="section">
+                    <h6 class="h6">05. Iconografia</h6>
+                    <h2 class="h2" style="margin-bottom: 60px;">FontAwesome Library</h2>
+                    <p class="body-lg" style="margin-bottom: 40px; max-width: 600px;">
+                        Para menus, features e decoradores. Preferimos contornos finos para equilibrar a composição com
+                        o peso da tipografia Montserrat.
+                    </p>
+                    <div class="grid-6">
+                        <div class="demo-box cursor-hover"
+                            style="text-align: center; font-size: 2.5rem; color: var(--c-accent);">
+                            <i class="fas fa-rocket"></i>
+                            <div class="body-sm" style="margin-top: 16px;">fa-rocket</div>
+                        </div>
+                        <div class="demo-box cursor-hover"
+                            style="text-align: center; font-size: 2.5rem; color: var(--c-accent);">
+                            <i class="fas fa-desktop"></i>
+                            <div class="body-sm" style="margin-top: 16px;">fa-desktop</div>
+                        </div>
+                        <div class="demo-box cursor-hover"
+                            style="text-align: center; font-size: 2.5rem; color: var(--c-accent);">
+                            <i class="fas fa-lock"></i>
+                            <div class="body-sm" style="margin-top: 16px;">fa-lock</div>
+                        </div>
+                        <div class="demo-box cursor-hover"
+                            style="text-align: center; font-size: 2.5rem; color: var(--c-accent);">
+                            <i class="fas fa-star"></i>
+                            <div class="body-sm" style="margin-top: 16px;">fa-star</div>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="divider">
+
+                <!-- 06. Motion -->
+                <section id="motion" class="section">
+                    <h6 class="h6">06. Imersão & Microinterações</h6>
+                    <h2 class="h2" style="margin-bottom: 60px;">Motion System</h2>
+
+                    <div class="grid-6">
+                        <div class="glass-panel cursor-hover">
+                            <i class="fas fa-layer-group"
+                                style="font-size: 1.5rem; margin-bottom: 16px; color: var(--c-accent);"></i>
+                            <h4 class="h4" style="margin-bottom: 12px; font-size: 1.25rem;">.fadeSlideIn</h4>
+                            <p class="body-sm">Uma transição CSS suave usando Cubic-Bezier. Acionada por JS
+                                (Intersection Observer) para que o conteúdo suba lentamente conforme a tela é rolada,
+                                engajando a leitura.</p>
+                        </div>
+                        <div class="glass-panel cursor-hover">
+                            <i class="fas fa-magic" style="font-size: 1.5rem; margin-bottom: 16px; color: #00FF5F;"></i>
+                            <h4 class="h4" style="margin-bottom: 12px; font-size: 1.25rem;">.btn-glow</h4>
+                            <p class="body-sm">Uma animação <code>pulse-glow</code> infinita feita simulando um
+                                espalhamento de box-shadow de rgba(0,255,95,0) a (0.5), guiando os olhos
+                                instantaneamente para o checkout.</p>
+                        </div>
+                        <div class="glass-panel cursor-hover">
+                            <i class="fas fa-mouse-pointer"
+                                style="font-size: 1.5rem; margin-bottom: 16px; color: var(--c-accent);"></i>
+                            <h4 class="h4" style="margin-bottom: 12px; font-size: 1.25rem;">Cursor Effect</h4>
+                            <p class="body-sm">Classes <code>.cursor-dot</code> e <code>.cursor-outline</code>
+                                substituem o mouse do SO. A aura expande com a classe <code>.cursor-hover</code> nos
+                                elementos interativos.</p>
+                        </div>
+                        <div class="glass-panel cursor-hover">
+                            <i class="fas fa-water"
+                                style="font-size: 1.5rem; margin-bottom: 16px; color: var(--c-accent);"></i>
+                            <h4 class="h4" style="margin-bottom: 12px; font-size: 1.25rem;">.liquid-blob</h4>
+                            <p class="body-sm">Formas absolutas renderizadas sob os elementos. Elas rotacionam e
+                                transladam suavemente via keyframes, criando o aspecto mutável do projeto.</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Footer Spacing -->
+            <div style="height: 100px;"></div>
+        </main>
+    </div>
+
+    <script>
+        // Custom Cursor JS
+        const dot = document.querySelector('.cursor-dot');
+        const outline = document.querySelector('.cursor-outline');
+
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            dot.style.left = `${posX}px`;
+            dot.style.top = `${posY}px`;
+
+            outline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 300, fill: "forwards", easing: "ease-out" });
+        });
+
+        // Add hover triggers
+        document.querySelectorAll('.cursor-hover, .btn, .glass-panel, input, a').forEach(h => {
+            h.addEventListener('mouseenter', () => outline.classList.add('hover'));
+            h.addEventListener('mouseleave', () => outline.classList.remove('hover'));
+        });
+
+        // Intersection Observer for Animations (.fadeSlideIn)
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const scrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target); // play once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fadeSlideIn').forEach(el => {
+            if (!el.closest('#hero')) {
+                el.style.animationPlayState = 'paused';
+                scrollObserver.observe(el);
+            }
+        });
+
+        // Update Nav Menu State on Scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.ds-nav-link');
+        const mainScroll = document.querySelector('.ds-main');
+
+        function updateActiveNav() {
+            let index = sections.length;
+            while (--index && window.scrollY + mainScroll.scrollTop < sections[index].offsetTop - 200) { }
+
+            navLinks.forEach((link) => link.classList.remove('active'));
+            if (navLinks[index]) {
+                navLinks[index].classList.add('active');
+            }
+        }
+    </script>
+</body>
+
+</html>

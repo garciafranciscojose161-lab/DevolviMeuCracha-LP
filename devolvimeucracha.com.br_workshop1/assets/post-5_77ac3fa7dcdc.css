@@ -1,0 +1,36 @@
+.elementor-kit-5{--e-global-color-primary:#FFFFFF;--e-global-color-secondary:#42113C;--e-global-color-text:#8D5757;--e-global-color-accent:#D4AF37;--e-global-color-e533318:#D4AF37;--e-global-typography-primary-font-family:"apolo";--e-global-typography-primary-font-weight:400;--e-global-typography-secondary-font-family:"Poppins";--e-global-typography-text-font-family:"Poppins";--e-global-typography-accent-font-family:"Poppins";background-color:#D7DADD;color:#FFFFFF;}.elementor-kit-5 e-page-transition{background-color:#FFBC7D;}.elementor-section.elementor-section-boxed > .elementor-container{max-width:1280px;}.e-con{--container-max-width:1280px;}.elementor-widget:not(:last-child){margin-block-end:20px;}.elementor-element{--widgets-spacing:20px 20px;--widgets-spacing-row:20px;--widgets-spacing-column:20px;}{}h1.entry-title{display:var(--page-title-display);}.site-header .site-branding{flex-direction:column;align-items:stretch;}.site-header{padding-inline-end:0px;padding-inline-start:0px;}.site-footer .site-branding{flex-direction:column;align-items:stretch;}@media(max-width:1024px){.elementor-section.elementor-section-boxed > .elementor-container{max-width:1024px;}.e-con{--container-max-width:1024px;}}@media(max-width:767px){.elementor-section.elementor-section-boxed > .elementor-container{max-width:767px;}.e-con{--container-max-width:767px;}}/* Start custom CSS */.pulse {
+	animation: pulse 0.7s infinite;
+	margin: 0 auto;
+	display: table;
+	margin-top: 0px;
+	animation-direction: alternate;
+	-webkit-animation-name: pulse;
+	animation-name: pulse;
+}
+@-webkit-keyframes pulse {
+	0% {
+	-webkit-transform: scale(1);
+}
+100% {
+	-webkit-transform: scale(1.1);
+}
+} @keyframes pulse {
+	0% {
+	transform: scale(1);
+}
+100% {
+	transform: scale(1.1);
+}/* End custom CSS */
+/* Start Custom Fonts CSS */@font-face {
+	font-family: 'apolo';
+	font-style: normal;
+	font-weight: 400;
+	font-display: auto;
+	src: url("APOLLO-Regular_c34bb944aa14.eot");
+	src: url("APOLLO-Regular_ba5f60765826.eot") format('embedded-opentype'),
+		url("APOLLO-Regular_480f26930137.woff2") format('woff2'),
+		url("APOLLO-Regular_597587c40cac.woff") format('woff'),
+		url("APOLLO-Regular_bbce535bd1ea.ttf") format('truetype'),
+		url("APOLLO-Regular_f04236918c29.svg") format('svg');
+}
+/* End Custom Fonts CSS */
