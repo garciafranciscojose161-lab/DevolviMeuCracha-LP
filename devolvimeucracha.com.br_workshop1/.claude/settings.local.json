@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"c:/Users/fjgar/Desktop/ASIMOV/Projetos/Devolvi Meu Cracha/devolvimeucracha.com.br_workshop1\" log --oneline -10)"
+    ]
+  }
+}
