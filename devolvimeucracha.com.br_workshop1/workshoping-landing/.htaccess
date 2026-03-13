@@ -1,0 +1,51 @@
+# ── Encoding ──────────────────────────────────────────────────────────────────
+AddDefaultCharset UTF-8
+
+# ── Compression (GZIP) ────────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript
+    AddOutputFilterByType DEFLATE image/svg+xml application/json
+    AddOutputFilterByType DEFLATE font/woff font/woff2 font/ttf
+</IfModule>
+
+# ── Browser Cache ─────────────────────────────────────────────────────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+    # HTML — no cache (always fresh)
+    ExpiresByType text/html                 "access plus 0 seconds"
+    # Images
+    ExpiresByType image/webp                "access plus 1 year"
+    ExpiresByType image/jpeg                "access plus 1 year"
+    ExpiresByType image/png                 "access plus 1 year"
+    ExpiresByType image/svg+xml             "access plus 1 year"
+    # Fonts
+    ExpiresByType font/woff2                "access plus 1 year"
+    ExpiresByType font/woff                 "access plus 1 year"
+    # JS / CSS
+    ExpiresByType application/javascript    "access plus 1 month"
+    ExpiresByType text/css                  "access plus 1 month"
+</IfModule>
+
+# ── Security Headers ──────────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# ── Block _dev folder from web access ─────────────────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^_dev/.*$ - [F,L]
+</IfModule>
+
+# ── Protect sensitive files ───────────────────────────────────────────────────
+<FilesMatch "\.(md|json|log|htaccess)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+<Files "robots.txt">
+    Order allow,deny
+    Allow from all
+</Files>

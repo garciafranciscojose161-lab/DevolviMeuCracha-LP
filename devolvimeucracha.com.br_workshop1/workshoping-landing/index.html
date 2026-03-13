@@ -4,21 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sair do Corporativo ou Escalar sua Consultoria - Workshop</title>
 
-    <!-- Google Fonts -->
+    <!-- ── Título e descrição primários ─────────────────────────── -->
+    <title>Criando Minha Consultoria Lucrativa | Workshop Online – Devolvi Meu Crachá</title>
+    <meta name="description" content="Workshop online ao vivo com Juliana Paes Garcia: aprenda a estruturar uma consultoria lucrativa saindo do corporativo. 28 de março, das 8h30 às 12h30. Vagas limitadas por R$49.">
+    <meta name="keywords" content="workshop consultoria, sair do corporativo, consultoria lucrativa, Devolvi Meu Crachá, Juliana Paes Garcia, carreira independente, posicionamento profissional">
+    <meta name="author" content="Devolvi Meu Crachá">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://devolvimeucracha.com.br/">
+
+    <!-- ── Open Graph (Facebook, LinkedIn, WhatsApp) ────────────── -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Devolvi Meu Crachá">
+    <meta property="og:title" content="Criando Minha Consultoria Lucrativa | Workshop Online">
+    <meta property="og:description" content="Workshop ao vivo com Juliana Paes Garcia: transforme sua experiência corporativa em uma consultoria lucrativa e independente. 28/03 · R$49.">
+    <meta property="og:url" content="https://devolvimeucracha.com.br/">
+    <meta property="og:image" content="img/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- ── Twitter Card ──────────────────────────────────────────── -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Criando Minha Consultoria Lucrativa | Workshop Online">
+    <meta name="twitter:description" content="Workshop ao vivo com Juliana Paes Garcia. Saia do corporativo e estruture sua consultoria lucrativa. 28/03 · R$49.">
+    <meta name="twitter:image" content="img/og-image.png">
+
+    <!-- ── Schema.org JSON-LD (SEO estruturado + visibilidade em LLMs) ── -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Workshop Criando Minha Consultoria Lucrativa",
+      "description": "Workshop online ao vivo onde profissionais experientes aprendem a estruturar uma consultoria lucrativa e independente, saindo do mercado corporativo com posicionamento e autoridade.",
+      "url": "https://devolvimeucracha.com.br/",
+      "startDate": "2025-03-28T08:30:00-03:00",
+      "endDate": "2025-03-28T12:30:00-03:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+      "location": {
+        "@type": "VirtualLocation",
+        "url": "https://devolvimeucracha.com.br/"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Devolvi Meu Crachá",
+        "url": "https://devolvimeucracha.com.br/"
+      },
+      "performer": {
+        "@type": "Person",
+        "name": "Juliana Paes Garcia",
+        "jobTitle": "Mentora de Carreira e Consultora",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Devolvi Meu Crachá"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "49.00",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/LimitedAvailability",
+        "validFrom": "2025-01-01",
+        "url": "https://devolvimeucracha.com.br/"
+      },
+      "image": "https://devolvimeucracha.com.br/img/og-image.png",
+      "inLanguage": "pt-BR"
+    }
+    </script>
+
+    <!-- ── Preload LCP hero asset ────────────────────────────────── -->
+    <link rel="preload" as="image" href="img/mentora-hero.webp" type="image/webp">
+
+    <!-- ── Preconnect + dns-prefetch ─────────────────────────────── -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://unpkg.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700;800&family=Merriweather:ital,wght@0,400;1,400&display=swap"
         rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-
-    <!-- Splitting.js CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
-    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css" />
 
     <style>
         /* --- CSS Variables & Design System Roots --- */
@@ -28,6 +94,7 @@
             --c-accent: #B3A275;
             --c-accent-hover: #D4C59A;
             --c-secondary: #00FF5F;
+            --c-error: #d95f5f;
             --c-text-primary: #F3F0E9;
             --c-text-muted: rgba(243, 240, 233, 0.7);
 
@@ -103,12 +170,12 @@
             width: 40px;
             height: 40px;
             border: 1px solid rgba(179, 162, 117, 0.5);
-            transition: width 0.2s, height 0.2s, background 0.2s;
+            transform: scale(1) translateZ(0);
+            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
         }
 
         body:hover .cursor-outline.hover {
-            width: 60px;
-            height: 60px;
+            transform: scale(1.5) translateZ(0);
             background: rgba(179, 162, 117, 0.1);
             border-color: var(--c-accent);
             mix-blend-mode: difference;
@@ -463,13 +530,7 @@
             }
         }
 
-        /* Splitting Initial State for GSAP */
-        .splitting .char {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        /* gsap.from() will handle the opacity transitions dynamically */
+        /* .splitting rules removed — Splitting.js no longer used */
 
         /* --- Responsiveness --- */
         @media (max-width: 1023px) {
@@ -512,6 +573,69 @@
                 /* Extra padding bottom for sticky mobile CTA */
             }
 
+            /* ── Hero Mobile Layout ─────────────────────────────────── */
+
+            /* 1. Converter grid em flex column */
+            .hero-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                text-align: center;
+            }
+
+            /* 2. Dissolver .hero-content — filhos viram itens diretos do flex */
+            .hero-content {
+                display: contents;
+            }
+
+            /* 3. Ordenar: logo → imagem → h1 → subtitle → ticket → CTA */
+            #hero-badge    { order: 1; margin-bottom: 0.75rem; }
+            #hero-image    { order: 2; }
+            .h1            { order: 3; }
+            #hero-subtitle { order: 4; }
+            #hero-ticket   { order: 5; }
+            #hero-cta      { order: 6; }
+
+            /* 4. Coluna da imagem — ocupa 100%, sem min-height de desktop */
+            .hero-image-col {
+                min-height: auto;
+                width: 100%;
+                margin-bottom: 1.5rem;
+            }
+
+            /* 5. Wrapper da imagem — full width, cantos menos arredondados */
+            .hero .mentor-image-wrapper {
+                max-width: 100%;
+                border-radius: 12px;
+                overflow: hidden;
+            }
+
+            /* 6. Imagem: compacta, recortada no rosto */
+            .hero .mentor-img {
+                height: 200px;
+                max-height: 200px;
+                object-fit: cover;
+                object-position: top center;
+                border-radius: 12px;
+                filter: none;
+            }
+
+            /* 7. Ocultar blobs e info box flutuante (bottom:-90px) no mobile */
+            .hero .liquid-blob,
+            #hero-image .glass-panel {
+                display: none;
+            }
+
+            /* 8. Garantir toque confortável no CTA (min 52px) */
+            #hero-cta .btn {
+                min-height: 52px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* ── Fim Hero Mobile Layout ─────────────────────────────── */
+
             .h1 {
                 line-height: 1.15;
             }
@@ -527,10 +651,6 @@
 
             .ticket-price {
                 align-items: flex-start;
-            }
-
-            .mentor-image-wrapper {
-                max-width: 400px;
             }
 
             /* Sticky Mobile CTA */
@@ -772,7 +892,7 @@
         }
 
         .btn-primary:hover {
-            background: #33ff7f;
+            background: var(--c-accent-hover);
             transform: scale(1.05);
             box-shadow: 0 0 30px rgba(0, 255, 95, 0.5);
             animation-play-state: paused;
@@ -781,6 +901,16 @@
         @keyframes btn-pulse-green {
             0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 95, 0.5); }
             70%       { box-shadow: 0 0 0 20px rgba(0, 255, 95, 0); }
+        }
+
+        /* Fallback: navegadores sem backdrop-filter */
+        @supports not (backdrop-filter: blur(1px)) {
+            .glass-panel {
+                background: rgba(10, 26, 28, 0.92);
+            }
+            .mobile-sticky-cta {
+                background: rgba(10, 26, 28, 0.98);
+            }
         }
 
         /* Reduced motion */
@@ -1044,7 +1174,7 @@
 
         .mentor-name {
             font-family: var(--font-display);
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-size: clamp(1.6rem, 3vw, 2.6rem);
             font-weight: 700;
             color: var(--c-text-primary);
             line-height: 1.2;
@@ -1302,9 +1432,9 @@
             font-family: var(--font-display);
             font-size: 0.95rem;
             font-weight: 600;
-            color: #d95f5f;
+            color: var(--c-error);
             text-decoration: line-through;
-            text-decoration-color: #d95f5f;
+            text-decoration-color: var(--c-error);
             margin-bottom: 2px;
         }
 
@@ -1469,7 +1599,7 @@
             flex-shrink: 0;
         }
 
-        .urgency-badge .fa-bolt { color: var(--c-accent); font-size: 0.8rem; }
+        .urgency-badge .svg-bolt { fill: var(--c-accent); width: 0.8rem; height: 0.8rem; vertical-align: -0.1em; }
 
         @media (max-width: 1023px) {
             .pricing-inner { grid-template-columns: 1fr; }
@@ -1509,7 +1639,7 @@
 
         .depoimentos-title {
             text-align: center;
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
             font-weight: 800;
             color: var(--c-text-primary);
             line-height: 1.2;
@@ -1667,7 +1797,7 @@
         .faq-title {
             text-align: center;
             font-family: var(--font-display);
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
             font-weight: 800;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -1969,6 +2099,25 @@
             #contato { padding: 56px 0 48px; }
         }
     </style>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '520159145578484');
+    fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=520159145578484&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 
 <body x-data="ticketSales()">
@@ -1987,11 +2136,12 @@
                 <!-- Left Column -->
                 <div class="hero-content">
                     <div class="gsap-reveal" id="hero-badge" style="margin-bottom: 16px;">
-                        <img src="Logo WS.png" alt="Devolvi Meu Crachá Logo"
+                        <img src="img/logo.png" alt="Devolvi Meu Crachá Logo"
+                            decoding="async" fetchpriority="high"
                             style="height: 72px; width: auto; max-width: 100%;">
                     </div>
 
-                    <h1 class="h1" data-splitting>Sair do Corporativo ou Escalar sua Consultoria</h1>
+                    <h1 class="h1">Estruture sua Consultoria Empresarial em uma manhã</h1>
 
                     <p class="body-lg gsap-reveal" id="hero-subtitle"
                         style="margin-top: 20px; margin-bottom: 32px; max-width: 90%;">
@@ -2005,11 +2155,11 @@
                             <div>
                                 <span class="badge badge-accent"
                                     style="font-size: 0.65rem; background: rgba(0, 255, 95, 0.1); color: #00FF5F; border-color: rgba(0, 255, 95, 0.3);">
-                                    <i class="fas fa-fire" style="margin-right: 4px;"></i> Vagas quase esgotadas
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em" aria-hidden="true" style="margin-right:4px;vertical-align:-0.125em"><path d="M159.3 5.4c7.8-7.3 19.9-7.2 27.7.1c27.6 25.9 53.5 53.8 77.7 84c11-14.4 23.5-30.1 37-42.9c7.9-7.4 20.1-7.4 28 .1c34.6 33 63.9 76.6 84.5 118c20.3 40.8 33.8 82.5 33.8 111.9C448 404.2 348.2 512 224 512C98.4 512 0 404.2 0 276.5c0-38.4 17.8-85.3 45.4-131.7C73.3 97.7 112.7 48.6 159.3 5.4zM225.7 416c25.3 0 47.7-7 68.8-21c42.1-29.4 53.4-88.2 28.1-134.4c-4.5-9-16-9.6-22.5-1l-1.2 1.5c-5.3 6.6-8 15-8.8 23.5c-.7 7.1-4.8 13.1-10.8 16.3c-6 3.1-13.3 2.8-19.1-.8c-24.5-14.7-38.8-41.2-36.5-69.3c.5-5.8-2.4-11.4-7.4-14.3c-4.9-2.9-10.9-2.9-15.9 0c-41 23.3-49.3 70.6-32.7 109.6c8.4 19.5 19.6 34.3 29.7 40.8c-28.3 2.9-39.2-15.4-44.3-31.3c-2.1-6.6-5.5-12.8-10.8-17.4c-5.3-4.6-12.4-6.7-19.5-5.8c-7.8 1.1-14.8 5.8-19.4 12.6c-7.5 11.2-10.6 25.2-7.7 38.6C106.1 383.4 160.4 416 225.7 416z"/></svg> Vagas quase esgotadas
                                 </span>
                             </div>
                             <div class="ticket-price">
-                                <span class="price-strikethrough">De R$ 97,00</span>
+                                <span class="price-strikethrough">De R$ 497,00</span>
                                 <span class="price-current text-gradient">R$ 49,00</span>
                             </div>
                         </div>
@@ -2028,9 +2178,9 @@
                     </div>
 
                     <div class="cta-wrapper gsap-reveal" id="hero-cta" style="margin-top: 32px;">
-                        <a href="#checkout" class="btn btn-glow cursor-hover"
+                        <a href="#pricing" class="btn btn-glow cursor-hover"
                             style="font-size: 1rem; padding: 20px 40px; width: 100%; max-width: 450px;">
-                            Garantir Minha Vaga Agora <i class="fas fa-arrow-right" style="margin-left: 12px;"></i>
+                            Garantir Minha Vaga Agora <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em" aria-hidden="true" style="margin-left:12px;vertical-align:-0.125em"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
                         </a>
                     </div>
                 </div>
@@ -2045,20 +2195,22 @@
 
                         <!-- Mentor Image -->
                         <!-- Usar data-speed p/ lenis parallax -->
-                        <img src="wepg1_157dfec2928e.webp" alt="Mentora" class="mentor-img cursor-hover"
-                            id="mentor-parallax" data-speed="0.9">
+                        <img src="img/mentora-hero.webp" alt="Mentora" class="mentor-img cursor-hover"
+                            id="mentor-parallax" data-speed="0.9"
+                            width="924" height="837"
+                            loading="lazy" decoding="async">
 
                         <!-- Mentor Info Box -->
                         <div class="glass-panel"
                             style="position: absolute; bottom: -90px; left: 50%; transform: translateX(-50%); width: 95%; max-width: 440px; padding: 20px 24px; text-align: center; z-index: 10; border-radius: 20px; background: rgba(10, 26, 28, 0.98); border: 1px solid rgba(179, 162, 117, 0.5); box-shadow: 0 15px 40px rgba(0,0,0,0.8);">
                             <h4 class="h4"
                                 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: #ffffff;">
-                                <i class="fas fa-signal" style="margin-right: 8px; color: #00FF5F;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" width="1em" height="1em" aria-hidden="true" style="margin-right:8px;color:#00FF5F;vertical-align:-0.125em"><path d="M576 0c17.7 0 32 14.3 32 32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V32c0-17.7 14.3-32 32-32zM448 96c17.7 0 32 14.3 32 32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V128c0-17.7 14.3-32 32-32zM352 224c0-17.7 14.3-32 32-32s32 14.3 32 32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V224zM192 288c17.7 0 32 14.3 32 32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V320c0-17.7 14.3-32 32-32zM96 416c0-17.7 14.3-32 32-32s32 14.3 32 32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V416z"/></svg>
                                 Workshop <span style="color: var(--c-accent);">Online e Ao Vivo</span>
                             </h4>
                             <p class="body-sm"
                                 style="color: #F3F0E9; font-weight: 500; font-size: 0.95rem; margin: 0; opacity: 1;">
-                                <i class="far fa-calendar-alt" style="margin-right: 6px; color: #D4C59A;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em" aria-hidden="true" style="margin-right:6px;color:#D4C59A;vertical-align:-0.125em"><path d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192z"/></svg>
                                 Sábado, 28 de Março - 08:30 às 12:30
                             </p>
                         </div>
@@ -2083,7 +2235,7 @@
 
             <!-- Título -->
             <div class="section-heading">
-                <h2 data-splitting="dobra2">
+                <h2>
                     <span class="text-light">Este workshop é</span>
                     <span class="text-gold"> para você que:</span>
                 </h2>
@@ -2107,7 +2259,7 @@
                     <p class="card-text">
                         <strong class="card-keyword">Você tem a expertise.</strong>
                         O que ainda falta é um modelo de negócio sólido que sustente
-                        uma consultoria de verdade — não um bico bem pago.
+                        uma consultoria de verdade — não um hobby caro.
                     </p>
                 </div>
 
@@ -2192,7 +2344,7 @@
 
             <!-- Heading -->
             <div class="section-heading">
-                <h2 data-splitting="dobra3" style="letter-spacing: 0.2em;">
+                <h2 style="letter-spacing: 0.2em;">
                     <span class="text-light">O QUE É O </span>
                     <span class="text-gold">WORKSHOP</span>
                 </h2>
@@ -2211,7 +2363,7 @@
                 <!-- Left: image -->
                 <div class="media-frame--float tablets-frame">
                     <img
-                        src="tablets.webp"
+                        src="img/tablets.webp"
                         alt="Profissionais em sessão de consultoria estratégica"
                         loading="lazy"
                         decoding="async"
@@ -2223,7 +2375,7 @@
 
                 <!-- Right: deliverables -->
                 <div class="workshop-right">
-                    <h3 class="card-title text-gold" data-splitting="dobra3-inner">O QUE VOCÊ VAI CONSTRUIR:</h3>
+                    <h3 class="card-title text-gold">O QUE VOCÊ VAI CONSTRUIR:</h3>
 
                     <div class="deliverables-list">
 
@@ -2328,7 +2480,7 @@
 
                 <!-- Left: deliverables -->
                 <div class="workshop-right paraquem-left">
-                    <h3 class="card-title text-gold" data-splitting="dobra4">PARA QUEM É ESTE WORKSHOP?</h3>
+                    <h3 class="card-title text-gold">PARA QUEM É ESTE WORKSHOP?</h3>
 
                     <div class="deliverables-list">
 
@@ -2382,7 +2534,7 @@
                 <!-- Right: image -->
                 <div class="media-frame--static caderno-frame">
                     <img
-                        src="caderno.webp"
+                        src="img/caderno.webp"
                         alt="Caderno com método estruturado de consultoria estratégica"
                         loading="lazy"
                         decoding="async"
@@ -2406,7 +2558,7 @@
 
                 <!-- Esquerda: bio -->
                 <div class="mentor-bio">
-                    <p class="mentor-label text-gold" data-splitting="dobra5">SOBRE A MENTORA</p>
+                    <p class="mentor-label text-gold">SOBRE A MENTORA</p>
                     <h2 class="mentor-name">Juliana Paes Garcia</h2>
                     <div class="mentor-name-line" aria-hidden="true"></div>
 
@@ -2455,7 +2607,7 @@
                 <!-- Direita: foto -->
                 <div class="mentor-photo-frame">
                     <img
-                        src="mentora-palco.jpeg"
+                        src="img/mentora-palco.jpg"
                         alt="Juliana Paes Garcia apresentando em palco"
                         loading="lazy"
                         decoding="async"
@@ -2477,7 +2629,7 @@
         <div class="container">
 
             <div class="section-heading">
-                <h2 data-splitting="dobra6">GARANTA SEU INGRESSO</h2>
+                <h2>GARANTA SEU INGRESSO</h2>
                 <p class="pricing-subtitle">Vagas limitadas · Lote atual com encerramento previsto</p>
                 <span class="pricing-line" aria-hidden="true"></span>
             </div>
@@ -2503,7 +2655,7 @@
                             <div class="dots-separator" aria-hidden="true">· · · · · · · · · · ·</div>
 
                             <div class="price-anchor">
-                                <p class="price-strikethrough-line">de R$697,00</p>
+                                <p class="price-strikethrough-line">de R$97,00</p>
                                 <p class="price-por-apenas">por apenas:</p>
                                 <div class="price-main-wrapper">
                                     <p class="price-main">R$<span id="price-countup">49</span>,00</p>
@@ -2514,9 +2666,9 @@
                                 </div>
                             </div>
 
-                            <a href="#" class="btn-cta cursor-hover" aria-label="Garantir meu ingresso no workshop">
+                            <a href="https://sun.eduzz.com/69KDQ3670O" class="btn-cta cursor-hover" aria-label="Garantir meu ingresso no workshop" target="_blank" rel="noopener">
                                 GARANTIR MEU INGRESSO
-                                <i class="fas fa-bolt" aria-hidden="true"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em" aria-hidden="true" class="svg-bolt" style="vertical-align:-0.125em"><path d="M349.4 44.6c5.9-13.7 1.5-29.7-10.6-38.5s-28.6-8-39.9 1.8l-256 224c-10 8.8-13.6 22.9-8.9 35.3S50.7 288 64 288H175.5L98.6 467.4c-5.9 13.7-1.5 29.7 10.6 38.5s28.6 8 39.9-1.8l256-224c10-8.8 13.6-22.9 8.9-35.3s-16.6-20.7-30-20.7H272.5L349.4 44.6z"/></svg>
                             </a>
 
                             <div class="event-details">
@@ -2547,7 +2699,7 @@
 
                         <!-- Coluna Direita -->
                         <div class="pricing-right">
-                            <h3 class="card-title text-gold" data-splitting="dobra6-inner">O QUE VOCÊ VAI RECEBER</h3>
+                            <h3 class="card-title text-gold">O QUE VOCÊ VAI RECEBER</h3>
 
                             <div class="deliverables-list pricing-deliverables">
 
@@ -2591,7 +2743,7 @@
                                             <path d="M6 10.5L8.5 13L14 7.5" stroke="var(--c-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </span>
-                                    <p class="deliverable-text">Acesso ao método proprietário validado por centenas de consultores que saíram do zero ao primeiro contrato de alto valor</p>
+                                    <p class="deliverable-text">Acesso ao método validado por centenas de consultores que saíram do zero ao primeiro contrato de alto valor</p>
                                 </div>
                                 <div class="deliverable-separator" aria-hidden="true"></div>
 
@@ -2627,8 +2779,7 @@
                                     </span>
                                     <div class="guarantee-content">
                                         <span class="guarantee-badge">GARANTIA TOTAL</span>
-                                        <p class="guarantee-title">7 dias de garantia incondicional</p>
-                                        <p class="deliverable-text" style="margin-top: 3px;">Se em 7 dias você sentir que não valeu cada centavo, devolvemos tudo. Sem perguntas.</p>
+                                        <p class="deliverable-text" style="margin-top: 3px;">Por ser um evento ao vivo, o reembolso pode ser solicitado até 24h antes do evento.</p>
                                     </div>
                                 </div>
 
@@ -2636,7 +2787,7 @@
 
                             <!-- Urgency fora da lista -->
                             <div class="urgency-badge">
-                                <i class="fas fa-bolt" aria-hidden="true"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em" aria-hidden="true" class="svg-bolt" style="vertical-align:-0.125em"><path d="M349.4 44.6c5.9-13.7 1.5-29.7-10.6-38.5s-28.6-8-39.9 1.8l-256 224c-10 8.8-13.6 22.9-8.9 35.3S50.7 288 64 288H175.5L98.6 467.4c-5.9 13.7-1.5 29.7 10.6 38.5s28.6 8 39.9-1.8l256-224c10-8.8 13.6-22.9 8.9-35.3s-16.6-20.7-30-20.7H272.5L349.4 44.6z"/></svg>
                                 <span>Oferta de lote atual encerra em breve · Últimas vagas disponíveis</span>
                             </div>
 
@@ -2649,13 +2800,15 @@
         </div><!-- /container -->
     </section><!-- /dobra 6 -->
 
+    <div class="section-divider depoimentos-sep" aria-hidden="true"></div>
+
     <!-- ── Dobra 7: Depoimentos ─────────────────────────────────── -->
     <section id="depoimentos" aria-label="Depoimentos de alunas">
         <div class="container">
 
             <div class="depoimentos-divider"></div>
             <p class="depoimentos-eyebrow">Quem já transformou sua carreira</p>
-            <h2 class="depoimentos-title" data-splitting="dobra7">
+            <h2 class="depoimentos-title">
                 Resultados <em>reais</em> de quem aplicou o método
             </h2>
             <p class="depoimentos-subtitle">
@@ -2667,36 +2820,26 @@
         <!-- Carousel — sem padding lateral para slides chegarem às bordas -->
         <div class="carousel-viewport" id="dep-viewport" aria-label="Carrossel de depoimentos" role="region">
             <div class="carousel-track" id="dep-track">
-                <!--
-                  Imagens originais mapeadas em ordem:
-                  1 → Ana-Rita_63a95086f7a0.png
-                  2 → Ana-Rita-1_f38f26cf1c08.png
-                  3 → Ana-Rita-2_45f612cac7b0.png
-                  4 → Ana-Rita-3_5ced4d459de7.png
-                  5 → Ana-Rita-8_1c315cb4cf1e.png
-                  6 → Ana-Rita-9_4230c9e17fc2.png
-                  7 → Ana-Rita-10_2159739e0443.png
-                -->
                 <div class="carousel-slide" data-index="0">
-                    <img src="Depoimentos/Ana-Rita_63a95086f7a0.png" alt="Depoimento 1" loading="lazy">
+                    <img src="img/depoimentos/dep-1.png" alt="Depoimento 1" width="761" height="407" loading="lazy" decoding="async">
                 </div>
                 <div class="carousel-slide" data-index="1">
-                    <img src="Depoimentos/Ana-Rita-1_f38f26cf1c08.png" alt="Depoimento 2" loading="lazy">
+                    <img src="img/depoimentos/dep-2.png" alt="Depoimento 2" width="851" height="510" loading="lazy" decoding="async">
                 </div>
                 <div class="carousel-slide" data-index="2">
-                    <img src="Depoimentos/Ana-Rita-2_45f612cac7b0.png" alt="Depoimento 3" loading="lazy">
+                    <img src="img/depoimentos/dep-3.png" alt="Depoimento 3" width="972" height="413" loading="lazy" decoding="async">
                 </div>
                 <div class="carousel-slide" data-index="3">
-                    <img src="Depoimentos/Ana-Rita-3_5ced4d459de7.png" alt="Depoimento 4" loading="lazy">
+                    <img src="img/depoimentos/dep-4.png" alt="Depoimento 4" width="951" height="476" loading="lazy" decoding="async">
                 </div>
                 <div class="carousel-slide" data-index="4">
-                    <img src="Depoimentos/Ana-Rita-8_1c315cb4cf1e.png" alt="Depoimento 5" loading="lazy">
+                    <img src="img/depoimentos/dep-5.png" alt="Depoimento 5" width="920" height="307" loading="lazy" decoding="async">
                 </div>
                 <div class="carousel-slide" data-index="5">
-                    <img src="Depoimentos/Ana-Rita-9_4230c9e17fc2.png" alt="Depoimento 6" loading="lazy">
+                    <img src="img/depoimentos/dep-6.png" alt="Depoimento 6" width="975" height="296" loading="lazy" decoding="async">
                 </div>
                 <div class="carousel-slide" data-index="6">
-                    <img src="Depoimentos/Ana-Rita-10_2159739e0443.png" alt="Depoimento 7" loading="lazy">
+                    <img src="img/depoimentos/dep-7.png" alt="Depoimento 7" width="934" height="260" loading="lazy" decoding="async">
                 </div>
             </div>
         </div>
@@ -2715,17 +2858,17 @@
         <!-- CTA -->
         <div class="depoimentos-cta">
             <a href="#pricing" class="btn btn-glow cursor-hover" style="font-size: 1.05rem; padding: 20px 40px;">
-                Quero ter resultados assim também <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                Quero ter resultados assim também <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em" aria-hidden="true" style="margin-left:10px;vertical-align:-0.125em"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
             </a>
             <div class="depoimentos-event-badges">
                 <span class="event-badge">
-                    <i class="fas fa-calendar-alt"></i> Sábado, 28 de Março
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em" aria-hidden="true" style="vertical-align:-0.125em"><path d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192z"/></svg> Sábado, 28 de Março
                 </span>
                 <span class="event-badge">
-                    <i class="fas fa-clock"></i> Das 8h30 às 12h30
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" width="1em" height="1em" aria-hidden="true" style="vertical-align:-0.125em"><path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.5 33.3-6.5s4.5-25.9-6.5-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg> Das 8h30 às 12h30
                 </span>
                 <span class="event-badge">
-                    <i class="fas fa-desktop"></i> 100% Online ao Vivo
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" width="1em" height="1em" aria-hidden="true" style="vertical-align:-0.125em"><path d="M64 0C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64H240l-10.7 32H160c-17.7 0-32 14.3-32 32s14.3 32 32 32H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H346.7L336 416H512c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zM512 64V352H64V64H512z"/></svg> 100% Online ao Vivo
                 </span>
             </div>
         </div>
@@ -2745,7 +2888,7 @@
 
             <div class="faq-divider" aria-hidden="true"></div>
             <p class="faq-eyebrow">Tire suas dúvidas</p>
-            <h2 class="faq-title" id="faq-title" data-splitting="dobra8">
+            <h2 class="faq-title" id="faq-title">
                 <span>PERGUNTAS </span><span class="word-gold">FREQUENTES</span>
             </h2>
             <div class="faq-title-line" aria-hidden="true"></div>
@@ -2791,7 +2934,7 @@
                         <div class="faq-answer" id="faq-body-2" role="region">
                             <div class="faq-answer-inner">
                                 <p><span class="highlight-word">Não.</span></p>
-                                <p>O workshop foi pensado justamente para quem ainda não estruturou uma consultoria, mas percebe que sua experiência profissional pode ser transformada em uma atuação própria no mercado.</p>
+                                <p>O workshop foi pensado tanto para quem já é Consultor como para quem ainda não estruturou uma Consultoria, mas percebe que sua experiência profissional pode ser transformada em uma atuação própria no mercado.</p>
                                 <p>Você vai entender quais são os pilares que sustentam uma transição sólida — desde posicionamento até construção de autoridade.</p>
                             </div>
                         </div>
@@ -2807,14 +2950,14 @@
                              aria-expanded="false"
                              aria-controls="faq-body-3">
                             <span class="faq-num" aria-hidden="true">03</span>
-                            <span class="faq-question-text">Eu preciso aparecer muito, gravar vídeos ou me expor para dar certo?</span>
+                            <span class="faq-question-text">Eu preciso aparecer muito ou gravar vídeos todos os dias para dar certo?</span>
                             <span class="faq-toggle" aria-hidden="true"></span>
                         </div>
                         <div class="faq-separator" aria-hidden="true"></div>
                         <div class="faq-answer" id="faq-body-3" role="region">
                             <div class="faq-answer-inner">
                                 <p><span class="highlight-word">Não.</span></p>
-                                <p>A proposta não depende de exposição performática ou de se tornar um "criador de conteúdo".</p>
+                                <p>A proposta não depende de exposição performática ou de se tornar um "influencer".</p>
                                 <p>O foco é construir autoridade reconhecida com clareza de posicionamento, sinais de instituição e difusão coerente, para que você seja percebido como referência no seu campo — e não como alguém apenas "se promovendo".</p>
                             </div>
                         </div>
@@ -2836,7 +2979,7 @@
                         <div class="faq-separator" aria-hidden="true"></div>
                         <div class="faq-answer" id="faq-body-4" role="region">
                             <div class="faq-answer-inner">
-                                <p>O workshop é um encontro online ao vivo, com duração aproximada de 2 horas.</p>
+                                <p>O workshop é um encontro online ao vivo, com duração de 4 horas.</p>
                                 <p>Durante esse período, você terá acesso a uma visão estruturada sobre como profissionais experientes podem reposicionar sua carreira e construir uma atuação independente baseada em conhecimento, experiência e reputação.</p>
                             </div>
                         </div>
@@ -2859,7 +3002,7 @@
                         <div class="faq-answer" id="faq-body-5" role="region">
                             <div class="faq-answer-inner">
                                 <p><span class="highlight-word">Sim.</span></p>
-                                <p>Ao final do encontro, será apresentada a possibilidade de participar de um programa mais aprofundado para quem deseja estruturar de forma completa sua atuação como consultor ou especialista independente.</p>
+                                <p>Ao final do encontro, será apresentada a possibilidade de participar de um programa mais aprofundado para quem deseja nosso acompanhamento para estruturar de forma completa sua atuação como consultor ou especialista independente.</p>
                                 <p>A participação nessa etapa é totalmente opcional.</p>
                             </div>
                         </div>
@@ -2885,6 +3028,28 @@
                                 <p><span class="highlight-word">Sim.</span></p>
                                 <p>De acordo com o Código de Defesa do Consumidor (art. 49), compras realizadas pela internet possuem direito de arrependimento em até 7 dias.</p>
                                 <p>Caso você solicite dentro desse prazo, o valor pago é devolvido integralmente, sem qualquer burocracia.</p>
+                                <p>Como se trata de um evento ao vivo, o reembolso pode ser solicitado até 24h antes do evento.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- P7 -->
+                <div class="faq-item" role="listitem">
+                    <div class="faq-item-inner">
+                        <div class="faq-question"
+                             role="button"
+                             tabindex="0"
+                             aria-expanded="false"
+                             aria-controls="faq-body-7">
+                            <span class="faq-num" aria-hidden="true">07</span>
+                            <span class="faq-question-text">O workshop vai ficar gravado?</span>
+                            <span class="faq-toggle" aria-hidden="true"></span>
+                        </div>
+                        <div class="faq-separator" aria-hidden="true"></div>
+                        <div class="faq-answer" id="faq-body-7" role="region">
+                            <div class="faq-answer-inner">
+                                <p>O ingresso regular não dá direito à gravação. Porém, durante a finalização da compra, você terá a opção de incluir o acesso à gravação como adicional por R$97.</p>
                             </div>
                         </div>
                     </div>
@@ -2895,7 +3060,7 @@
             <!-- CTA -->
             <div class="faq-cta">
                 <a href="#pricing" class="btn btn-glow cursor-hover" style="font-size: 1.05rem; padding: 20px 40px; display: inline-flex;">
-                    Garantir Meu Ingresso <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                    Garantir Meu Ingresso <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em" aria-hidden="true" style="margin-left:10px;vertical-align:-0.125em"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
                 </a>
                 <p class="faq-cta-meta">Sábado, 28 de Março &nbsp;·&nbsp; Das 8h30 às 12h30 &nbsp;·&nbsp; Online e ao vivo</p>
             </div>
@@ -2929,8 +3094,8 @@
 
     <!-- Mobile Sticky CTA Wrapper (Appears on scroll) -->
     <div class="mobile-sticky-cta" id="mobile-cta">
-        <a href="#checkout" class="btn btn-glow cursor-hover" style="font-size: 1rem; padding: 18px 24px;">
-            Garantir Minha Vaga <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+        <a href="#pricing" class="btn btn-glow cursor-hover" style="font-size: 1rem; padding: 18px 24px;">
+            Garantir Minha Vaga <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em" aria-hidden="true" style="margin-left:8px;vertical-align:-0.125em"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
         </a>
     </div>
 
@@ -2940,21 +3105,18 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
 
     <!-- GSAP Core & ScrollTrigger -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <!-- Lenis (Smooth Scroll) -->
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
-
-    <!-- Splitting.js -->
-    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
 
     <!-- CountUp.js (UMD load) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js"></script>
 
     <!-- tsParticles -->
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles-engine@2.12.0/tsparticles.engine.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/tsparticles-engine@2.12.0/tsparticles.engine.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.min.js"></script>
 
     <!-- App Logic -->
     <script>
@@ -2990,14 +3152,7 @@
         // --- Initialize External Libs when DOM is ready ---
         document.addEventListener('DOMContentLoaded', () => {
 
-            // 1. Splitting.js
-            try {
-                if (typeof Splitting !== 'undefined') {
-                    Splitting({ target: '.h1', by: 'words, chars' });
-                }
-            } catch (e) { console.error("Splitting Error:", e); }
-
-            // 2. Lenis Smooth Scroll
+            // 1. Lenis Smooth Scroll
             try {
                 if (typeof Lenis !== 'undefined') {
                     const lenis = new Lenis({
@@ -3029,12 +3184,13 @@
 
             // 3. tsParticles
             try {
+                const PARTICLE_COLOR = '#B3A275';
                 if (typeof tsParticles !== 'undefined') {
                     tsParticles.load("tsparticles", {
                         fpsLimit: 60,
                         particles: {
                             number: { value: 30, density: { enable: true, value_area: 800 } },
-                            color: { value: "#B3A275" },
+                            color: { value: PARTICLE_COLOR },
                             shape: { type: "circle" },
                             opacity: { value: 0.3, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
                             size: { value: 3, random: true, anim: { enable: false } },
@@ -3058,19 +3214,7 @@
                 if (typeof gsap !== 'undefined') {
                     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-                    // Splitting characters animation (if Splitting loaded and broke characters)
-                    if (document.querySelector('.h1 .char')) {
-                        tl.from(".h1 .char", {
-                            y: 40,
-                            opacity: 0,
-                            rotationX: -90,
-                            stagger: 0.015,
-                            duration: 0.8,
-                            ease: "back.out(1.2)"
-                        });
-                    }
-
-                    tl.from("#hero-badge", { y: 20, opacity: 0, duration: 0.6 }, "-=0.4")
+                    tl.from("#hero-badge", { y: 20, opacity: 0, duration: 0.6 })
                         .from("#hero-subtitle", { y: 20, opacity: 0, duration: 0.6 }, "-=0.4")
                         .from("#hero-ticket", {
                             y: 30,
@@ -3079,7 +3223,7 @@
                             clearProps: "all",
                             onComplete: () => {
                                 setTimeout(() => {
-                                    const percentage = 47;
+                                    const percentage = 87;
                                     document.getElementById('ticket-progress').style.width = percentage + '%';
 
                                     if (typeof countUp !== 'undefined') {
@@ -3129,13 +3273,6 @@
                 }
             } catch (e) { console.error("ScrollTrigger Error:", e); }
 
-            // ── Dobra 2: Splitting.js ──────────────────────────────
-            try {
-                if (typeof Splitting !== 'undefined') {
-                    Splitting({ target: '[data-splitting="dobra2"]', by: 'words' });
-                }
-            } catch (e) {}
-
             // ── Dobra 2: GSAP ScrollTrigger ───────────────────────
             try {
                 if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
@@ -3152,9 +3289,6 @@
                     })
                     .to('.section-divider', { scaleX: 1, duration: 0.5, ease: 'power2.out' })
                     .to('.section-title-line', { scaleX: 1, duration: 0.5, ease: 'power2.out' }, '-=0.2')
-                    .from('[data-splitting="dobra2"] .word', {
-                        y: 40, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out'
-                    }, '-=0.3')
                     .from('.audience-card', {
                         x: -40, opacity: 0, duration: 0.6, stagger: 0.15, ease: 'power3.out'
                     }, '-=0.2')
@@ -3178,9 +3312,6 @@
                     });
 
                     // ── DOBRA 3 ──
-                    Splitting({ target: '[data-splitting="dobra3"]', by: 'words' });
-                    Splitting({ target: '[data-splitting="dobra3-inner"]', by: 'words' });
-
                     gsap.timeline({
                         scrollTrigger: {
                             trigger: '#o-workshop',
@@ -3191,15 +3322,9 @@
                         }
                     })
                     .to('.workshop-divider', { scaleX: 1, duration: 0.5, ease: 'power2.out' })
-                    .from('[data-splitting="dobra3"] .word', {
-                        y: 40, duration: 0.6, stagger: 0.1, ease: 'power3.out'
-                    }, '-=0.2')
-                    .from('.section-subtitle', { y: 20, duration: 0.6 }, '-=0.3')
+                    .from('.section-subtitle', { y: 20, duration: 0.6 }, '-=0.2')
                     .from('.workshop-card', { scale: 0.97, duration: 0.5, ease: 'power2.out' }, '-=0.2')
                     .from('.tablets-frame', { x: -30, duration: 0.7 }, '-=0.3')
-                    .from('[data-splitting="dobra3-inner"] .word', {
-                        duration: 0.5, stagger: 0.07
-                    }, '-=0.4')
                     .from('.deliverable-item', {
                         x: 20, duration: 0.5, stagger: 0.12, ease: 'power2.out'
                     }, '-=0.2')
@@ -3219,8 +3344,6 @@
                     });
 
                     // ── DOBRA 4 ──
-                    Splitting({ target: '[data-splitting="dobra4"]', by: 'words' });
-
                     gsap.timeline({
                         scrollTrigger: {
                             trigger: '#para-quem',
@@ -3231,10 +3354,7 @@
                         }
                     })
                     .to('.paraquem-divider', { scaleX: 1, duration: 0.5, ease: 'power2.out' })
-                    .from('[data-splitting="dobra4"] .word', {
-                        y: 30, duration: 0.6, stagger: 0.08, ease: 'power3.out'
-                    }, '-=0.2')
-                    .from('.caderno-frame', { x: 30, duration: 0.7 }, '-=0.4')
+                    .from('.caderno-frame', { x: 30, duration: 0.7 }, '-=0.2')
                     .from('.paraquem-left .deliverable-item', {
                         x: 20, duration: 0.5, stagger: 0.13, ease: 'power2.out'
                     }, '-=0.3')
@@ -3254,8 +3374,6 @@
                     });
 
                     // ── DOBRA 5 ──
-                    Splitting({ target: '[data-splitting="dobra5"]', by: 'words' });
-
                     gsap.timeline({
                         scrollTrigger: {
                             trigger: '#mentora',
@@ -3274,23 +3392,19 @@
                         }
                     })
                     .to('.mentora-divider', { scaleX: 1, duration: 0.5, ease: 'power2.out' })
-                    .from('[data-splitting="dobra5"] .word', {
-                        y: 25, duration: 0.5, stagger: 0.07, ease: 'power3.out'
-                    }, '-=0.2')
-                    .from('.mentor-name', { y: 20, duration: 0.5 }, '-=0.3')
+                    .from('.mentor-name', { y: 20, duration: 0.5 }, '-=0.2')
                     .to('.mentor-name-line', { scaleX: 1, duration: 0.5 }, '-=0.2')
                     .from('.mentor-photo', { scale: 1.05, x: 20, duration: 0.8, ease: 'power3.out' }, '-=0.5')
                     .from('.mentor-paragraphs p', { y: 15, duration: 0.5, stagger: 0.15 }, '-=0.5')
                     .from('.stat-item', { scale: 0.9, duration: 0.4, stagger: 0.15 }, '-=0.2');
 
                     // ── DOBRA 6 ──
-                    Splitting({ target: '[data-splitting="dobra6"]', by: 'words' });
-                    Splitting({ target: '[data-splitting="dobra6-inner"]', by: 'words' });
-
                     gsap.timeline({
                         scrollTrigger: {
                             trigger: '#pricing',
                             start: 'top 85%',
+                            fastScrollEnd: true,
+                            preventOverlaps: true,
                             once: true,
                             onEnter: () => {
                                 const priceEl = document.getElementById('price-countup');
@@ -3305,57 +3419,46 @@
                         }
                     })
                     .to('.pricing-divider', { scaleX: 1, duration: 0.5, ease: 'power2.out' })
-                    .from('[data-splitting="dobra6"] .word', {
-                        y: 24, opacity: 0, duration: 0.5, stagger: 0.07, ease: 'power3.out'
-                    }, '-=0.2')
                     .from('.pricing-subtitle', { opacity: 0, duration: 0.3 }, '-=0.2')
                     .to('.pricing-line', { scaleX: 1, duration: 0.4 }, '-=0.15')
                     .from('.pricing-card', { y: 24, opacity: 0, duration: 0.5, ease: 'power3.out' }, '-=0.2')
                     .from('.pricing-left > *', {
                         y: 16, opacity: 0, duration: 0.45, stagger: 0.08, ease: 'power2.out'
                     }, '-=0.3')
-                    .from('[data-splitting="dobra6-inner"] .word', {
-                        opacity: 0, duration: 0.35, stagger: 0.05
-                    }, '<0.2')
                     .from('.pricing-deliverables .deliverable-item', {
                         x: 12, opacity: 0, duration: 0.35, stagger: 0.06, ease: 'power2.out'
                     }, '-=0.2')
                     .from('.urgency-badge', { opacity: 0, y: 8, duration: 0.3 }, '-=0.1');
 
                     // ── DOBRA 7: Depoimentos entrance ──
-                    Splitting({ target: '[data-splitting="dobra7"]', by: 'words' });
-
                     gsap.timeline({
                         scrollTrigger: {
                             trigger: '#depoimentos',
                             start: 'top 85%',
+                            fastScrollEnd: true,
+                            preventOverlaps: true,
                             once: true
                         }
                     })
-                    .to('.depoimentos-divider', { scaleX: 1, duration: 0.5, ease: 'power2.out' })
-                    .from('[data-splitting="dobra7"] .word', {
-                        y: 24, opacity: 0, duration: 0.5, stagger: 0.07, ease: 'power3.out'
-                    }, '-=0.2')
+                    .to('.depoimentos-sep', { scaleX: 1, duration: 0.5, ease: 'power2.out' })
+                    .to('.depoimentos-divider', { scaleX: 1, duration: 0.5, ease: 'power2.out' }, '-=0.3')
                     .from('.depoimentos-subtitle', { opacity: 0, y: 12, duration: 0.4 }, '-=0.2')
                     .from('#dep-viewport', { opacity: 0, y: 30, duration: 0.6, ease: 'power3.out' }, '-=0.2')
                     .from('.carousel-dots', { opacity: 0, duration: 0.3 }, '-=0.2')
                     .from('.depoimentos-cta', { opacity: 0, y: 16, duration: 0.4 }, '-=0.2');
 
                     // ── DOBRA 8: FAQ entrance ──
-                    Splitting({ target: '[data-splitting="dobra8"]', by: 'words' });
-
                     gsap.timeline({
                         scrollTrigger: {
                             trigger: '#faq',
                             start: 'top 80%',
+                            fastScrollEnd: true,
+                            preventOverlaps: true,
                             once: true
                         }
                     })
                     .to('.faq-divider-sep', { scaleX: 1, duration: 0.5, ease: 'power2.out' })
                     .to('.faq-divider', { scaleX: 1, duration: 0.4, ease: 'power2.out' }, '-=0.2')
-                    .from('[data-splitting="dobra8"] .word', {
-                        y: 40, opacity: 0, duration: 0.55, stagger: 0.1, ease: 'power3.out'
-                    }, '-=0.15')
                     .to('.faq-title-line', { scaleX: 1, duration: 0.45, ease: 'power2.out' }, '-=0.2')
                     .from('.faq-item', {
                         y: 20, opacity: 0, duration: 0.4, stagger: 0.1, ease: 'power2.out'
@@ -3379,6 +3482,8 @@
                         scrollTrigger: {
                             trigger: '#contato',
                             start: 'top 85%',
+                            fastScrollEnd: true,
+                            preventOverlaps: true,
                             once: true
                         }
                     })
@@ -3678,6 +3783,54 @@
         });
 
     })();
+    </script>
+
+    <!-- ── GSAP Visibility Fallback ────────────────────────────── -->
+    <script>
+    // After 3s, force-reveal any element still hidden by GSAP (e.g. slow connection / ScrollTrigger failed)
+    setTimeout(function () {
+        var sections = ['#para-voce', '#o-workshop', '#para-quem', '#mentora', '#pricing', '#depoimentos', '#faq', '#contato'];
+        sections.forEach(function (sel) {
+            var section = document.querySelector(sel);
+            if (!section) return;
+            section.querySelectorAll('*').forEach(function (el) {
+                if (el.style && el.style.opacity === '0') {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                }
+            });
+        });
+    }, 3000);
+    </script>
+
+    <!-- ── Meta Pixel — InitiateCheckout ───────────────────────── -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var btnPricing = document.querySelector('#pricing .btn-cta');
+        if (btnPricing) {
+            btnPricing.addEventListener('click', function() {
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'InitiateCheckout');
+                }
+            });
+        }
+    });
+    </script>
+
+    <!-- ── UTM Passthrough ──────────────────────────────────────── -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+        var params = new URLSearchParams(window.location.search);
+        var utmParams = new URLSearchParams();
+        utmKeys.forEach(function (k) { if (params.has(k)) utmParams.set(k, params.get(k)); });
+        if (!utmParams.toString()) return;
+        document.querySelectorAll('a[href*="sun.eduzz.com"]').forEach(function (a) {
+            var url = new URL(a.href);
+            utmParams.forEach(function (v, k) { url.searchParams.set(k, v); });
+            a.href = url.toString();
+        });
+    });
     </script>
 </body>
 

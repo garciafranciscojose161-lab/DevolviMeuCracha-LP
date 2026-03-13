@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /_dev/
+
+Sitemap: https://devolvimeucracha.com.br/sitemap.xml
