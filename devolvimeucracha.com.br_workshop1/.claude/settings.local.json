@@ -1,7 +1,25 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git -C \"c:/Users/fjgar/Desktop/ASIMOV/Projetos/Devolvi Meu Cracha/devolvimeucracha.com.br_workshop1\" log --oneline -10)"
+      "Bash(git -C \"c:/Users/fjgar/Desktop/ASIMOV/Projetos/Devolvi Meu Cracha/devolvimeucracha.com.br_workshop1\" log --oneline -10)",
+      "Bash(python3 -c \":*)",
+      "Bash(node -e:*)",
+      "Bash(grep -n \"Estruture sua Consultoria\\\\|R$ 497\\\\|hobby caro\\\\|método validado\\\\|até 24h antes\\\\|tanto para quem já é\\\\|gravar vídeos todos os dias\\\\|influencer\\\\|duração de 4 horas\\\\|nosso acompanhamento\\\\|Como se trata de um evento\\\\|O workshop vai ficar gravado\" \"c:/Users/fjgar/Desktop/ASIMOV/Projetos/Devolvi Meu Cracha/devolvimeucracha.com.br_workshop1/workshoping-landing/index.html\")",
+      "Bash(cp \"Logo WS.png\" \"img/logo.png\")",
+      "Bash(cp \"wepg1_157dfec2928e.webp\" \"img/mentora-hero.webp\")",
+      "Bash(cp \"tablets.webp\" \"img/tablets.webp\")",
+      "Bash(cp \"caderno.webp\" \"img/caderno.webp\")",
+      "Bash(cp \"mentora-palco.jpeg\" \"img/mentora-palco.jpg\")",
+      "Bash(cp \"og-image.jpg.png\" \"img/og-image.png\")",
+      "Bash(cp \"Depoimentos/Ana-Rita_63a95086f7a0.png\" \"img/depoimentos/dep-1.png\")",
+      "Bash(cp \"Depoimentos/Ana-Rita-1_f38f26cf1c08.png\" \"img/depoimentos/dep-2.png\")",
+      "Bash(cp \"Depoimentos/Ana-Rita-2_45f612cac7b0.png\" \"img/depoimentos/dep-3.png\")",
+      "Bash(cp \"Depoimentos/Ana-Rita-3_5ced4d459de7.png\" \"img/depoimentos/dep-4.png\")",
+      "Bash(cp \"Depoimentos/Ana-Rita-8_1c315cb4cf1e.png\" \"img/depoimentos/dep-5.png\")",
+      "Bash(cp \"Depoimentos/Ana-Rita-9_4230c9e17fc2.png\" \"img/depoimentos/dep-6.png\")",
+      "Bash(cp \"Depoimentos/Ana-Rita-10_2159739e0443.png\" \"img/depoimentos/dep-7.png\")",
+      "Bash(cp \"design_system.html\" \"_dev/design_system.html\")",
+      "Bash(cp \"mega-prompt.md\" \"_dev/mega-prompt.md\")"
     ]
   }
 }
