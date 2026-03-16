@@ -532,6 +532,11 @@
 
         /* .splitting rules removed — Splitting.js no longer used */
 
+        /* Foto mobile: escondida por padrão (desktop) */
+        .mentor-mobile-img {
+            display: none;
+        }
+
         /* --- Responsiveness --- */
         @media (max-width: 1023px) {
             .hero-grid {
@@ -569,65 +574,103 @@
 
         @media (max-width: 767px) {
             .hero {
-                padding: 80px 0 120px 0;
-                /* Extra padding bottom for sticky mobile CTA */
+                padding: 56px 0 48px 0;
+                height: auto;
+                min-height: 100dvh;
+                align-items: flex-start;
             }
 
             /* ── Hero Mobile Layout ─────────────────────────────────── */
 
-            /* 1. Converter grid em flex column */
+            /* 1. Grid → flex column */
             .hero-grid {
                 display: flex;
                 flex-direction: column;
                 gap: 0;
-                text-align: center;
+                text-align: left;
             }
 
-            /* 2. Dissolver .hero-content — filhos viram itens diretos do flex */
+            /* 2. hero-content filhos viram flex items diretos */
             .hero-content {
                 display: contents;
             }
 
-            /* 3. Ordenar: logo → imagem → h1 → subtitle → ticket → CTA */
-            #hero-badge    { order: 1; margin-bottom: 0.75rem; }
-            #hero-image    { order: 2; }
-            .h1            { order: 3; }
-            #hero-subtitle { order: 4; }
-            #hero-ticket   { order: 5; }
-            #hero-cta      { order: 6; }
+            /* 3. Ordenar: badge(logo+foto) → h1 → subtitle → ticket → CTA */
+            #hero-badge    { order: 1; }
+            .h1            { order: 2; }
+            #hero-subtitle { order: 3; }
+            #hero-ticket   { order: 4; }
+            #hero-cta      { order: 5; }
 
-            /* 4. Coluna da imagem — ocupa 100%, sem min-height de desktop */
-            .hero-image-col {
-                min-height: auto;
-                width: 100%;
-                margin-bottom: 1.5rem;
+            /* 4. Esconder coluna com mentora-hero.webp */
+            #hero-image {
+                display: none;
             }
 
-            /* 5. Wrapper da imagem — full width, cantos menos arredondados */
-            .hero .mentor-image-wrapper {
-                max-width: 100%;
-                border-radius: 12px;
-                overflow: hidden;
+            /* 5. Badge row: logo + foto lado a lado */
+            #hero-badge {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 0;
             }
 
-            /* 6. Imagem: compacta, recortada no rosto */
-            .hero .mentor-img {
-                height: 200px;
-                max-height: 200px;
-                object-fit: cover;
-                object-position: top center;
-                border-radius: 12px;
-                filter: none;
+            /* 6. Foto mobile visível */
+            .mentor-mobile-img {
+                display: block;
+                height: 130px;
+                width: auto;
+                object-fit: contain;
+                object-position: bottom center;
+                flex-shrink: 0;
             }
 
-            /* 7. Ocultar blobs e info box flutuante (bottom:-90px) no mobile */
+            /* 7. Título */
+            .h1 {
+                font-size: clamp(1.6rem, 6vw, 2rem);
+                line-height: 1.2;
+                margin-top: 0.75rem;
+            }
+
+            /* 8. Subtítulo */
+            #hero-subtitle {
+                font-size: 0.85rem !important;
+                margin-top: 0.5rem !important;
+                margin-bottom: 0 !important;
+                max-width: 100% !important;
+            }
+
+            /* 9. Card de preço compacto */
+            #hero-ticket {
+                padding: 0.75rem !important;
+                margin-top: 0.75rem;
+            }
+
+            /* 10. Barra de progresso compacta */
+            .progress-bar-bg {
+                height: 6px;
+            }
+
+            /* 11. Esconder texto de percentual (não cabe em 6px) */
+            .progress-percentage-text {
+                display: none;
+            }
+
+            /* 12. Ocultar blobs e info box flutuante */
             .hero .liquid-blob,
             #hero-image .glass-panel {
                 display: none;
             }
 
-            /* 8. Garantir toque confortável no CTA (min 52px) */
+            /* 13. CTA full width */
+            #hero-cta {
+                margin-top: 1.5rem !important;
+                width: 100%;
+            }
+
             #hero-cta .btn {
+                width: 100%;
                 min-height: 52px;
                 display: inline-flex;
                 align-items: center;
@@ -636,21 +679,18 @@
 
             /* ── Fim Hero Mobile Layout ─────────────────────────────── */
 
-            .h1 {
-                line-height: 1.15;
-            }
-
             .glass-panel {
                 padding: 20px;
             }
 
             .ticket-header {
-                flex-direction: column;
-                gap: 12px;
+                flex-direction: row;
+                align-items: center;
+                gap: 8px;
             }
 
             .ticket-price {
-                align-items: flex-start;
+                align-items: flex-end;
             }
 
             /* Sticky Mobile CTA */
@@ -1263,6 +1303,39 @@
             .mentor-stats { gap: 1rem; }
         }
 
+        @media (max-width: 767px) {
+            .mentor-stats {
+                flex-wrap: nowrap;
+                gap: 0.4rem;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+            .stat-item {
+                flex: 1;
+                min-width: 0;
+                align-items: center;
+            }
+            .stat-row {
+                justify-content: center;
+            }
+            .stat-number {
+                font-size: clamp(1.3rem, 5.5vw, 1.7rem);
+            }
+            .stat-suffix {
+                font-size: 0.95rem;
+            }
+            .stat-label {
+                font-size: 0.58rem;
+                text-align: center;
+                line-height: 1.3;
+            }
+            .stat-divider {
+                height: 2rem;
+                flex-shrink: 0;
+                align-self: center;
+            }
+        }
+
         /* Responsividade dobra 2 */
         @media (max-width: 1023px) {
             .audience-grid {
@@ -1276,10 +1349,98 @@
                 padding: 64px 0;
             }
             .audience-grid {
-                grid-template-columns: 1fr;
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .audience-card {
+                width: 100%;
+                box-sizing: border-box;
+                margin-left: 0;
+                margin-right: 0;
+                text-align: center;
+            }
+
+            .audience-card .card-icon {
+                margin-left: auto;
+                margin-right: auto;
             }
             .card-number {
                 opacity: 0.03;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .workshop-card,
+            .workshop-card--inverted {
+                padding: 24px 16px !important;
+                overflow: hidden;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .workshop-card > *,
+            .workshop-card--inverted > * {
+                min-width: 0;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .media-frame--float,
+            .media-frame--static,
+            .caderno-frame {
+                width: 100%;
+                max-width: 100%;
+                overflow: hidden;
+            }
+
+            .media-frame--float .media-img,
+            .media-frame--static .media-img {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            .workshop-right,
+            .paraquem-left {
+                width: 100%;
+                min-width: 0;
+                max-width: 100%;
+                overflow: hidden;
+                padding-right: 0;
+                box-sizing: border-box;
+            }
+
+            .workshop-right .deliverables-list,
+            .paraquem-left .deliverables-list {
+                padding-right: 20px;
+                box-sizing: border-box;
+            }
+
+            .deliverables-list {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .deliverable-item {
+                width: 100%;
+                min-width: 0;
+                box-sizing: border-box;
+            }
+
+            .deliverable-text {
+                flex: 1;
+                min-width: 0;
+                max-width: 100%;
+                word-break: break-word;
+                overflow-wrap: break-word;
+            }
+
+            .card-title {
+                font-size: 0.95rem;
+                word-break: break-word;
             }
         }
 
@@ -1610,6 +1771,30 @@
         @media (max-width: 767px) {
             #pricing { padding: 64px 0; }
             .price-main { font-size: clamp(3rem, 14vw, 4rem); }
+            .pricing-card {
+                overflow: hidden;
+            }
+            .pricing-left,
+            .pricing-right {
+                width: 100%;
+                min-width: 0;
+                box-sizing: border-box;
+                overflow: hidden;
+            }
+            .pricing-deliverables {
+                padding-right: 20px;
+                box-sizing: border-box;
+            }
+            .pricing-deliverables .deliverable-item {
+                min-width: 0;
+                box-sizing: border-box;
+            }
+            .pricing-deliverables .deliverable-text {
+                flex: 1;
+                min-width: 0;
+                word-break: break-word;
+                overflow-wrap: break-word;
+            }
         }
 
         /* ── Dobra 7: Depoimentos ────────────────────────────── */
@@ -2033,6 +2218,25 @@
             .faq-question-text { font-size: 0.9rem; }
             .faq-answer-inner { padding: 0 1rem 1rem 1rem; }
             .faq-title { letter-spacing: 0.1em; }
+            /* FAQ Garantia: badge menor para dar espaço ao texto */
+            .faq-garantia .faq-question {
+                gap: 0.5rem;
+                padding: 1rem 1.25rem;
+                flex-wrap: nowrap;
+                align-items: center;
+            }
+            .faq-garantia-badge {
+                padding: 2px 7px;
+                font-size: 0.52rem;
+                letter-spacing: 0.06em;
+                flex-shrink: 0;
+                white-space: nowrap;
+            }
+            .faq-garantia .faq-question-text {
+                flex: 1;
+                min-width: 0;
+                font-size: 0.875rem;
+            }
         }
 
         /* ── Dobra 9: Contato + Footer ────────────────────────── */
@@ -2139,6 +2343,9 @@
                         <img src="img/logo.png" alt="Devolvi Meu Crachá Logo"
                             decoding="async" fetchpriority="high"
                             style="height: 72px; width: auto; max-width: 100%;">
+                        <img src="img/mentora-mobile.png" alt="Mentora Juliana Paes Garcia"
+                            class="mentor-mobile-img"
+                            decoding="async" loading="lazy">
                     </div>
 
                     <h1 class="h1">Estruture sua Consultoria Empresarial em uma manhã</h1>
