@@ -726,6 +726,100 @@
                 display: none;
             }
         }
+
+        /* ── Countdown Banner ── */
+        #countdown-banner {
+            width: 100%;
+            background: rgba(10, 26, 28, 0.96);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(179, 162, 117, 0.25);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            gap: 4px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Linha decorativa dourada no topo do banner */
+        #countdown-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 1.5px;
+            background: linear-gradient(90deg, transparent, var(--c-accent), transparent);
+        }
+
+        .countdown-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            min-width: 44px;
+        }
+
+        .countdown-num {
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+            font-weight: 800;
+            color: var(--c-accent);
+            line-height: 1;
+            letter-spacing: 0.04em;
+        }
+
+        .countdown-label {
+            font-family: var(--font-body);
+            font-size: 0.58rem;
+            font-weight: 600;
+            color: var(--c-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+        }
+
+        .countdown-sep {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: rgba(179, 162, 117, 0.35);
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+
+        .countdown-tagline {
+            font-family: var(--font-body);
+            font-size: clamp(0.58rem, 1.8vw, 0.68rem);
+            color: var(--c-text-muted);
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        /* Hero: descontar altura do banner para tudo caber em 100vh */
+        .hero {
+            min-height: calc(100vh - 64px);
+            height: calc(100vh - 64px);
+        }
+
+        @media (max-width: 767px) {
+            .hero {
+                min-height: calc(100dvh - 60px) !important;
+                height: auto !important;
+            }
+            .countdown-unit {
+                min-width: 38px;
+            }
+        }
     </style>
 
     <!-- ── Dobra 2: Este workshop é para você que ─────────────── -->
@@ -2326,6 +2420,27 @@
 
 <body x-data="ticketSales()">
 
+    <!-- ── Countdown Banner ── -->
+    <div id="countdown-banner" role="timer" aria-live="polite" aria-label="Contagem regressiva para o workshop">
+        <div class="countdown-row">
+            <div class="countdown-unit">
+                <span class="countdown-num" id="cd-days">--</span>
+                <span class="countdown-label">dias</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+                <span class="countdown-num" id="cd-hours">--</span>
+                <span class="countdown-label">horas</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+                <span class="countdown-num" id="cd-minutes">--</span>
+                <span class="countdown-label">min</span>
+            </div>
+        </div>
+        <span class="countdown-tagline">Para acabar as inscrições</span>
+    </div>
+
     <!-- Custom Cursor Custom DOM -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
@@ -2387,7 +2502,7 @@
                     <div class="cta-wrapper gsap-reveal" id="hero-cta" style="margin-top: 32px;">
                         <a href="#pricing" class="btn btn-glow cursor-hover"
                             style="font-size: 1rem; padding: 20px 40px; width: 100%; max-width: 450px;">
-                            Garantir Minha Vaga Agora <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em" aria-hidden="true" style="margin-left:12px;vertical-align:-0.125em"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+                            Garantir Minha Vaga <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em" aria-hidden="true" style="margin-left:12px;vertical-align:-0.125em"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
                         </a>
                     </div>
                 </div>
@@ -4038,6 +4153,31 @@
             a.href = url.toString();
         });
     });
+    </script>
+
+    <!-- ── Countdown Script ── -->
+    <script>
+    (function () {
+        var target = new Date('2026-03-28T08:30:00-03:00').getTime();
+
+        function pad(n) { return String(n).padStart(2, '0'); }
+
+        function tick() {
+            var diff = target - Date.now();
+            if (diff <= 0) {
+                document.getElementById('cd-days').textContent    = '00';
+                document.getElementById('cd-hours').textContent   = '00';
+                document.getElementById('cd-minutes').textContent = '00';
+                return;
+            }
+            document.getElementById('cd-days').textContent    = pad(Math.floor(diff / 86400000));
+            document.getElementById('cd-hours').textContent   = pad(Math.floor((diff % 86400000) / 3600000));
+            document.getElementById('cd-minutes').textContent = pad(Math.floor((diff % 3600000) / 60000));
+        }
+
+        tick();
+        setInterval(tick, 30000);
+    })();
     </script>
 </body>
 
